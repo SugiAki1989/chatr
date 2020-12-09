@@ -2,6 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
-config.yml
-.DS_Store
 .Rbuildignore
+.DS_Store
+config.yml
+memo.md
