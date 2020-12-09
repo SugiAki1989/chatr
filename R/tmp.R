@@ -1,4 +1,6 @@
 chatr_setup(config_file_path = '/Users/aki/Documents/chatr/config.yml')
+devtools::document(pkg = "~/Documents/chatr")
+
 
 # https://enadgltk5u4u.x.pipedream.net
 
