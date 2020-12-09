@@ -2,6 +2,9 @@ chatr_setup(config_file_path = '/Users/aki/Documents/chatr/config.yml')
 
 # https://enadgltk5u4u.x.pipedream.net
 
+r <- GET("https://enadgltk5u4u.x.pipedream.net",
+         query = list(key1 = "value1", key2 = "value2"))
+
 library(httr)
 r <- GET("http://httpbin.org/get")
 r
@@ -161,3 +164,5 @@ POST("https://enadgltk5u4u.x.pipedream.net/post", body = list(a = 1, b = 2, c = 
 
 POST(url, body = upload_file("mypath.txt"))
 POST(url, body = list(x = upload_file("mypath.txt")))
+
+
