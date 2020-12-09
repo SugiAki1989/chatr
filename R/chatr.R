@@ -1,9 +1,9 @@
 #' Send txet and R code to ChatWork room.
+#' @description This function is used to send a text or an R code to the specified roomid.
 #' @param ... expressions to be sent to ChatWork
 #' @param api_token your full ChatWork API token
 #' @param roomid which room to post the text and R code
 #' @param code Whether to enclose text and R code in [code][/code] tags or not
-#' @description This function is used to send a text or an R code to the specified roomid.
 #' @examples
 #' chatr(code = TRUE,
 #' set.seed(1989),
@@ -14,6 +14,22 @@
 #'
 #' chatr(code = FALSE, "Hello ChatWork!")
 #' @import httr
+#' @export
+
+# /------------------------------------------------------------------------------------------
+# From: https://developer.chatwork.com/ja/endpoint_rooms.html#POST-rooms-room_id-messages
+# Method: POST
+# Endpoint: /rooms/{room_id}/messages
+# Description: チャットに新しいメッセージを追加
+# How:
+#   curl -X POST -H "X-ChatWorkToken: {my_api_token}"
+#        -d "body=Hello+Chatwork%21&self_unread=0"
+#        "https://api.chatwork.com/v2/rooms/{room_id}/messages"
+# Response:
+# {
+#   "message_id": 1234
+# }
+# ------------------------------------------------------------------------------------------/
 
 chatr <- function(...,
                   code = FALSE,
@@ -89,14 +105,19 @@ chatr <- function(...,
       output <- sprintf("[code]%s[/code]", output)
     }
 
-    res <- httr::POST(
+    # `self_unread` arg 1: Unread, 0(default): Already read
+    response <- httr::POST(
       url = end_point_url,
       config = httr::add_headers(`X-ChatWorkToken` = api_token),
       body = list(body = output,
                   self_unread = 0)
     )
 
-    res$message_id <- as.character(httr::content(x = res, as = "parsed"))
+    # REVIEW:
+    # response$message_id <- as.character(httr::content(x = response, as = "parsed"))
   }
-  return(res)
+
+  return(response)
 }
+
+
