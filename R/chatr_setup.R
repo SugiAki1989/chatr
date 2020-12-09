@@ -1,11 +1,11 @@
 #' Setup environment variables for ChatWork API connection
-#' @param config_file_path path to config.yml file
 #' @description This function sets api_token and roomid as environment variables.
+#' @param config_file_path path to config.yml file
 #' @examples
-#' chatr_setup(config_file_path = "~/Documents/chatr/config.yml")
+#' chatr_setup(config_file_path = "~/config.yml")
 #' @import config
 
-chatr_setup <- function(config_file_path){
+chatr_setup <- function(config_file_path = NULL){
 
   is_file_path <- file.exists(config_file_path)
   if (is_file_path != TRUE) {

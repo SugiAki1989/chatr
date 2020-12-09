@@ -54,7 +54,5 @@ chatr_me <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN")){
   return(result)
 }
 
-chatr_me()
-
 
 
