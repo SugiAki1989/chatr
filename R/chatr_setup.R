@@ -16,3 +16,4 @@ chatr_setup <- function(config_file_path = NULL){
   Sys.setenv(CHATWORK_API_TOKEN = config$api_token)
   Sys.setenv(CHATWORK_ROOMID = config$roomid)
 }
+
