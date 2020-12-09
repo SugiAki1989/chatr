@@ -8,12 +8,6 @@
 # test_img <- ggplot(data=iris, aes(x=Species, y=Sepal.Length, fill=Species)) +
 #   geom_point()
 
-
-
-
-file_message <- 'test_imgae'
-file_path <- "/Users/aki/Desktop/test_img.png"
-
 chat_img <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
                      roomid = Sys.getenv("CHATWORK_ROOMID"),
                      file_message,
