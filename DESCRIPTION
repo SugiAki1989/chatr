@@ -1,11 +1,15 @@
 Package: chatr
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Title: Send text, R code and R objects to 'ChatWork'.
+Version: 0.0.0.9
+Author: Sugiaki1989
+Maintainer: Sugiaki1989 <sugiaki@gmail.com>
+Description: This package is based on slackr and made for ChatWork.ChatWork provides a service for teams to collaborate by sharing messages, images, links, files and more. chatr functions in this package are provided that make it possible to interact with the ChatWork API. 
+License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
+Depends:
+    R (>= 4.0.3)
+Imports:
+    httr (>= 1.4.1),
+    config (>= 0.3)
+RoxygenNote: 7.1.1
