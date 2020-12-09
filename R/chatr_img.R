@@ -19,7 +19,13 @@ chat_img <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
                      file_message,
                      file_path) {
 
-  # TODO: input validation
+  if (api_token == "") {
+    stop("`api_token` not found. Did you forget to call chatr_setup()?")
+  }
+
+  if (roomid == "") {
+    stop("`roomid` not found. Did you forget to call chatr_setup()?")
+  }
 
   end_point_url <- paste0("https://api.chatwork.com/v2/rooms/", roomid, "/files")
 
@@ -40,7 +46,7 @@ chat_img <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
 
 
 chat_img(
-  file_message = 'test_imgae',
+  file_message = "test_imgae",
   file_path = "/Users/aki/Desktop/test_img.png")
 
 

@@ -91,7 +91,7 @@ chatr <- function(...,
 
     res <- httr::POST(
       url = end_point_url,
-      config = httr::add_headers('X-ChatWorkToken' = api_token),
+      config = httr::add_headers(`X-ChatWorkToken` = api_token),
       body = list(body = output,
                   self_unread = 0)
     )

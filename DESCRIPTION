@@ -8,7 +8,7 @@ Description: This package is based on slackr and made for ChatWork.ChatWork prov
 License: MIT + file LICENSE
 Encoding: UTF-8
 Depends:
-    R (>= 4.0.3)
+    R (>= 3.6.3)
 Imports:
     httr (>= 1.4.1),
     config (>= 0.3)

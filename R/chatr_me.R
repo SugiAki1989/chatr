@@ -1,5 +1,4 @@
 #' Function to get my account information
-#' @param func the function to get my information.
 #' @param api_token your full ChatWork API token
 #' @description This function is used to send a text or an R code to the specified roomid.
 #' @examples
@@ -16,7 +15,7 @@ chatr_me <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN")){
 
   res_tmp <- httr::GET(
     url = end_point_url,
-    config = httr::add_headers('X-ChatWorkToken' = api_token)
+    config = httr::add_headers(`X-ChatWorkToken` = api_token)
   )
 
   res <- httr::content(res_tmp)
