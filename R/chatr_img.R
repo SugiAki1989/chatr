@@ -16,9 +16,9 @@
 # Endpoint: /rooms/{room_id}/files
 # Description: チャットに新しいファイルをアップロード
 # How:
-#   curl -X POST -H "X-ChatWorkToken: {my_api_token}"
-#        -F"file=@/path/to/file"
-#        -F"message=I+attached+comment+to+chat."
+#   curl -X POST -H "X-ChatWorkToken: {my_api_token}" \
+#        -F"file=@/path/to/file" \
+#        -F"message=I+attached+comment+to+chat." \
 #        "https://api.chatwork.com/v2/rooms/{room_id}/files"
 # Response:
 # {
@@ -53,7 +53,7 @@ chat_img <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
     stop("Image file size exceeds the upper limit of 5MB.")
   }
 
-  end_point_url <- paste0("https://api.chatwork.com/v2/rooms/", roomid, "/files")
+  end_point_url <- paste0(CHATWORK_API_URL, "rooms/", roomid, "/files")
 
   response <- httr::POST(
     url = end_point_url,

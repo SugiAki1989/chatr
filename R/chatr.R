@@ -22,8 +22,8 @@
 # Endpoint: /rooms/{room_id}/messages
 # Description: チャットに新しいメッセージを追加
 # How:
-#   curl -X POST -H "X-ChatWorkToken: {my_api_token}"
-#        -d "body=Hello+Chatwork%21&self_unread=0"
+#   curl -X POST -H "X-ChatWorkToken: {my_api_token}" \
+#        -d "body=Hello+Chatwork%21&self_unread=0" \
 #        "https://api.chatwork.com/v2/rooms/{room_id}/messages"
 # Response:
 # {
@@ -99,7 +99,7 @@ chatr <- function(...,
     # convert character vector
     output <- paste0(rval, collapse = "\n")
 
-    end_point_url <- paste0("https://api.chatwork.com/v2/rooms/", roomid, "/messages")
+    end_point_url <- paste0(CHATWORK_API_URL, "rooms/", roomid, "/messages")
 
     if (code == TRUE) {
       output <- sprintf("[code]%s[/code]", output)

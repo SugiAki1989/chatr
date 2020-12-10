@@ -14,7 +14,7 @@
 # Endpoint: /my/tasks
 # Description: 自分のタスク一覧を取得する。(※100件まで取得可能)
 # How:
-#   curl -X GET -H "X-ChatWorkToken: {my_api_token}"
+#   curl -X GET -H "X-ChatWorkToken: {my_api_token}" \
 #         "https://api.chatwork.com/v2/my/tasks?assigned_by_account_id=78&status=done"
 # Response:
 # [
@@ -64,7 +64,7 @@ chatr_tasks <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
     stop("`api_token` not found. Did you forget to call chatr_setup()?")
   }
 
-  end_point_url <- "https://api.chatwork.com/v2/my/tasks"
+  end_point_url <- paste0(CHATWORK_API_URL, "my/tasks")
 
   response <- httr::GET(url = end_point_url,
                         config = httr::add_headers(`X-ChatWorkToken` = api_token),

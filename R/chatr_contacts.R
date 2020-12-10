@@ -33,7 +33,7 @@ chatr_contacts <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN")){
     stop("`api_token` not found. Did you forget to call chatr_setup()?")
   }
 
-  end_point_url <- "https://api.chatwork.com/v2/contacts"
+  end_point_url <- paste0(CHATWORK_API_URL, "contacts")
 
   response <- httr::GET(url = end_point_url,
                         config = httr::add_headers(`X-ChatWorkToken` = api_token))
