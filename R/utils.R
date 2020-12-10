@@ -3,8 +3,6 @@
 #' @param file_path file path of the image or video file you want to upload
 #' @examples
 #' is_file_limit(file_path = ~/path_to_file)
-#' @import
-#' @export
 
 is_file_limit <- function(file_path){
 
@@ -17,7 +15,7 @@ is_file_limit <- function(file_path){
   if (5242880 > file_size){
     result <- TRUE
   } else {
-    stop("The file size exceeds the upper limit of 5MB.")
+    result <- FALSE
   }
   return(result)
 }

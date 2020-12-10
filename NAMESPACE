@@ -2,10 +2,9 @@
 
 export(chat_img)
 export(chatr)
+export(chatr_contacts)
 export(chatr_me)
 export(chatr_status)
 export(chatr_tasks)
-export(is_file_limit)
-import("")
 import(config)
 import(httr)

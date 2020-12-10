@@ -25,11 +25,15 @@
 #   "file_id": 1234
 # }
 # ------------------------------------------------------------------------------------------/
+# ggplot2::ggplot(data=iris, aes(x=Species, y=Sepal.Length, fill=Species)) + geom_point()
+# ggsave(filename = "test_img_43419byte.png", path = "~/Desktop")
+# chat_img(file_path = "~/Desktop/test_img_43419byte.png")
 
 chat_img <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
                      roomid = Sys.getenv("CHATWORK_ROOMID"),
-                     file_message,
-                     file_path) {
+                     file_path,
+                     message = "Image file uploaded."
+                     ) {
 
   if (api_token == "") {
     stop("`api_token` not found. Did you forget to call chatr_setup()?")
@@ -39,9 +43,15 @@ chat_img <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
     stop("`roomid` not found. Did you forget to call chatr_setup()?")
   }
 
-  # TODO: input validation for file_message
-  # TODO: input validation for file_path
-  # TODO: アップロードするファイル（上限：5MB）のチェック
+  is_file_path <- file.exists(file_path)
+  if (is_file_path != TRUE) {
+    stop("image file not found. please confirm file path.")
+  }
+
+  is_limit <- is_file_limit(file_path)
+  if (is_limit != TRUE){
+    stop("Image file size exceeds the upper limit of 5MB.")
+  }
 
   end_point_url <- paste0("https://api.chatwork.com/v2/rooms/", roomid, "/files")
 
@@ -52,16 +62,12 @@ chat_img <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
       httr::add_headers(`Content-Type` = "multipart/form-data")
     ),
     body = list(file = httr::upload_file(file_path),
-                message = file_message)
+                message = message)
     )
 
   return(response)
 }
 
-# test_img <- ggplot(data=iris, aes(x=Species, y=Sepal.Length, fill=Species)) + geom_point()
-# chat_img(
-#   file_message = "test_imgae",
-#   file_path = "/Users/aki/Desktop/test_img.png")
 
 
 
