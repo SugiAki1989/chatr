@@ -1,4 +1,4 @@
-#' Chack file size
+#' Check file size
 #' @description This function is used to chack file size.
 #' @param file_path file path of the image or video file you want to upload
 #' @examples

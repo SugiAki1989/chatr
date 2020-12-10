@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{is_file_limit}
 \alias{is_file_limit}
-\title{Chack file size}
+\title{Check file size}
 \usage{
 is_file_limit(file_path)
 }
