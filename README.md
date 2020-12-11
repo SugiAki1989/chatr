@@ -19,6 +19,8 @@ remotes::install_github("SugiAki1989/chatr")
 library(chatr)
 ```
 
+**Note:The functions corresponding to `/incoming_requests` and some functions in `/rooms` are not implemented.**
+
 ## Setup
 
 This is a basic example which shows you how to solve a common problem:
