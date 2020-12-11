@@ -43,6 +43,51 @@ is_room_icons <- function(icon_preset){
   return(result)
 }
 
+#' Check task deadline datetime format
+#' @description This function is used to check datetime format
+#' @param datetime datetime
+#' @examples
+#' is_datetime_format("2020-12-12 00:00:00")
+
+is_datetime_format <- function(datetime) {
+  pattern <- "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])\\s{1}([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]"
+  result_tmp <- grep(x = datetime, pattern = pattern)
+
+  if (length(result_tmp) == 0) {
+    result <- FALSE
+    } else if (result_tmp == 1) {
+      result <- TRUE
+    }
+
+  return(result)
+}
+
+#' Unix time converter to datetime
+#' @description This function is used to convert from JST datetime to Unix time
+#' @param datetime datetime
+#' @examples
+#' conv_datetime2unixtime("2020-12-12 00:00:00")
+
+conv_datetime2unixtime <- function(datetime){
+  result <- as.numeric(as.POSIXlt(datetime, origin = "Asia/Tokyo"))
+  return(result)
+}
+
+#' Check task deadline datetime
+#' @description This function is used to check task deadline date
+#' @param icon_preset icon you want to update
+#' @examples
+#' is_deadline(datetime)
+
+is_deadline <- function(datetime){
+  if (datetime >= as.numeric(Sys.time())){
+    result <- TRUE
+  } else {
+    result <- FALSE
+  }
+  return(result)
+}
+
 
 
 
