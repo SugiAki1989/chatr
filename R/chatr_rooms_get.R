@@ -1,5 +1,5 @@
-#' Function to get chat room list
-#' @description This function is used to get chat room list.
+#' Function to get chat room informations
+#' @description This function is used to get chat room informations
 #' @param api_token your full ChatWork API token
 #' @examples
 #' chatr_rooms_get()
