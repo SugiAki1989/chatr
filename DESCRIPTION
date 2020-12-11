@@ -1,15 +1,15 @@
 Package: chatr
 Type: Package
-Title: Send text, R code and R objects to 'ChatWork'.
+Title: R wrapper for Chatwork Web API.
 Version: 0.0.0.9
 Author: Sugiaki1989
-Maintainer: Sugiaki1989 <sugiaki@gmail.com>
-Description: This package is based on slackr and made for ChatWork.ChatWork provides a service for teams to collaborate by sharing messages, images, links, files and more. chatr functions in this package are provided that make it possible to interact with the ChatWork API. 
+Maintainer: Sugiaki1989 <akisugi1989@gmail.com>
+Description: chatr package is a R wrapper for sending texts, R scripts and images to chat rooms to get, update and delete chat room information and tasks from Chatwork’s Web API(v2). 
 License: MIT + file LICENSE
 Encoding: UTF-8
 Depends:
-    R (>= 3.6.3)
+    R (>= 4.0.3)
 Imports:
-    httr (>= 1.4.1),
+    httr (>= 1.4.2),
     config (>= 0.3)
 RoxygenNote: 7.1.1
