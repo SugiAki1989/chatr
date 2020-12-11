@@ -5,8 +5,8 @@
 #' @param file_message the body of the message you post with the file
 #' @param file_path file path of the image file you want to upload
 #' @examples
-#' chat_img(file_message = "Hello Chatwork image.",
-#'          file_path = "path_to_image_file")
+#' chatr_room_post_file(file_message = "Hello Chatwork image.",
+#'                      file_path = "path_to_image_file")
 #' @import httr
 #' @export
 
@@ -27,12 +27,12 @@
 # ------------------------------------------------------------------------------------------/
 # ggplot2::ggplot(data=iris, aes(x=Species, y=Sepal.Length, fill=Species)) + geom_point()
 # ggsave(filename = "test_img_43419byte.png", path = "~/Desktop")
-# chat_img(file_path = "~/Desktop/test_img_43419byte.png")
+# chatr_room_post_file(file_path = "~/Desktop/test_img_43419byte.png")
 
-chat_img <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
-                     roomid = Sys.getenv("CHATWORK_ROOMID"),
-                     file_path,
-                     message = "Image file uploaded by chatr through API."
+chatr_room_post_file <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
+                                 roomid = Sys.getenv("CHATWORK_ROOMID"),
+                                 file_path,
+                                 message = "Image file uploaded by chatr through API."
                      ) {
 
   if (api_token == "") {
