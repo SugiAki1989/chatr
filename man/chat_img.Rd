@@ -8,7 +8,7 @@ chat_img(
   api_token = Sys.getenv("CHATWORK_API_TOKEN"),
   roomid = Sys.getenv("CHATWORK_ROOMID"),
   file_path,
-  message = "Image file uploaded."
+  message = "Image file uploaded by chatr through API."
 )
 }
 \arguments{

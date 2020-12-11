@@ -70,6 +70,7 @@ chatr_tasks <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
                         config = httr::add_headers(`X-ChatWorkToken` = api_token),
                         query = list(assigned_by_account_id = assigned_by_account_id,
                                      status = status))
+  httr::warn_for_status(response)
 
   result <- httr::content(x = response,
                           as = "parsed",

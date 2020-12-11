@@ -112,6 +112,7 @@ chatr <- function(...,
       body = list(body = output,
                   self_unread = 0)
     )
+    httr::warn_for_status(response)
 
     # REVIEW:
     # response$message_id <- as.character(httr::content(x = response, as = "parsed"))

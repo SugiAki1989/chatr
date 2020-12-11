@@ -10,7 +10,7 @@ is_file_limit(file_path)
 \item{file_path}{file path of the image or video file you want to upload}
 }
 \description{
-This function is used to chack file size.
+This function is used to check file size.
 }
 \examples{
 is_file_limit(file_path = ~/path_to_file)

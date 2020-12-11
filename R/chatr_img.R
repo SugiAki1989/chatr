@@ -32,7 +32,7 @@
 chat_img <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
                      roomid = Sys.getenv("CHATWORK_ROOMID"),
                      file_path,
-                     message = "Image file uploaded."
+                     message = "Image file uploaded by chatr through API."
                      ) {
 
   if (api_token == "") {
@@ -64,11 +64,10 @@ chat_img <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
     body = list(file = httr::upload_file(file_path),
                 message = message)
     )
+  httr::warn_for_status(response)
 
   return(response)
 }
-
-
 
 
 
