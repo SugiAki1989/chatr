@@ -75,4 +75,5 @@ If you want to send image file, execute `chatr_room_post_file()` with `message` 
 chatr_room_post_file(message = "Hello Chatwork image.", file_path = "~/path_to_image/image.png")
 ```
 
-![chatr_room_post_file](https://user-images.githubusercontent.com/65038325/101940037-370f3000-3c29-11eb-9605-7b2b3046eb79.png)
+![chatr_room_post_file](https://user-images.githubusercontent.com/65038325/101940188-75a4ea80-3c29-11eb-8023-a044556f96f9.png)
+
