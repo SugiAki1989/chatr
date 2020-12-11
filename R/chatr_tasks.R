@@ -4,7 +4,7 @@
 #' @param assigned_by_account_id person id who assigned the task
 #' @param status select open task or closed task
 #' @examples
-#' chatr_tasks()
+#' chatr_my_tasks()
 #' @import httr
 #' @export
 
@@ -57,7 +57,7 @@
 # ]
 # ------------------------------------------------------------------------------------------/
 
-chatr_tasks <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
+chatr_my_tasks <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
                         assigned_by_account_id = NULL,
                         status = "open"){
   if (api_token == "") {

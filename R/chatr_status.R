@@ -2,7 +2,7 @@
 #' @description This function is used to get my unread count, unread TO count, and unfinished task count
 #' @param api_token your full ChatWork API token
 #' @examples
-#' chatr_status()
+#' chatr_my_status()
 #' @import httr
 #' @export
 
@@ -24,7 +24,7 @@
 # }
 # ------------------------------------------------------------------------------------------/
 
-chatr_status <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN")){
+chatr_my_status <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN")){
   if (api_token == "") {
     stop("`api_token` not found. Did you forget to call chatr_setup()?")
   }
