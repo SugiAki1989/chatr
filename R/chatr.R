@@ -114,7 +114,7 @@ chatr <- function(...,
     )
     httr::warn_for_status(response)
 
-    # UNNEED: httr::contentchatr("test"))
+    # UNNEED: httr::contentchatr("test")) is same
     # response$message_id <- as.character(httr::content(x = response, as = "parsed"))
   }
 

@@ -4,6 +4,8 @@ DEFAULT_ICONS <- c("group", "check", "document", "meeting", "event", "project",
                    "business", "study", "security", "star", "idea", "heart",
                    "magcup", "beer", "music", "sports", "travel")
 
+'%nin%' <- function(x, y) !(x %in% y)
+
 #' Check file size
 #' @description This function is used to check file size.
 #' @param file_path file path of the image or video file you want to upload
@@ -40,6 +42,8 @@ is_room_icons <- function(icon_preset){
   }
   return(result)
 }
+
+
 
 
 
