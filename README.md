@@ -70,5 +70,5 @@ chatr(code = TRUE,
 If you want to send image file, execute `chatr_room_post_file()` with `message` and `file_path`.
 
 ```R:R
-chatr_room_post_file(file_message = "Hello Chatwork image.", file_path = "~/path_to_image/image.png")
+chatr_room_post_file(message = "Hello Chatwork image.", file_path = "~/path_to_image/image.png")
 ```

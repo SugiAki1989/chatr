@@ -69,5 +69,3 @@ chatr_room_post_file <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
   return(response)
 }
 
-
-
