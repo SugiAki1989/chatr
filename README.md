@@ -66,9 +66,13 @@ chatr(code = TRUE,
   summary(fit))
 ```
 
+![chatr](https://user-images.githubusercontent.com/65038325/101940002-28287d80-3c29-11eb-9422-f840d257631c.png)
+
 ### Send image file to chat room
 If you want to send image file, execute `chatr_room_post_file()` with `message` and `file_path`.
 
 ```R:R
 chatr_room_post_file(message = "Hello Chatwork image.", file_path = "~/path_to_image/image.png")
 ```
+
+![chatr_room_post_file](https://user-images.githubusercontent.com/65038325/101940037-370f3000-3c29-11eb-9605-7b2b3046eb79.png)
