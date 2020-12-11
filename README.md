@@ -55,6 +55,8 @@ If you want to send text, set `code = FALSE` and execute `chatr()`.
 chatr(code = FALSE, "Long Long Loooooong Calculation Done!!")
 ```
 
+![chatr_nocodetag](https://user-images.githubusercontent.com/65038325/101940355-b6046880-3c29-11eb-9432-9b4d430499ee.png)
+
 If you want to send Rscript and eval it, set `code = TRUE` and execute the function. In this case, the text is enclosed by code tag(`[code]Rscript[/code]`).
 
 ``` r
