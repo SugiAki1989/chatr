@@ -1,7 +1,7 @@
 #' Function to upload image file
 #' @description This function is used to upload image file to the specified roomid.
 #' @param api_token your full ChatWork API token
-#' @param roomid which room to post the text and R code
+#' @param roomid which room to post
 #' @param file_message the body of the message you post with the file
 #' @param file_path file path of the image file you want to upload
 #' @examples

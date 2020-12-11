@@ -1,7 +1,7 @@
 #' Function to create chat room
 #' @description This function is used to create chat room.
 #' @param api_token your full ChatWork API token
-#' @param roomid which room to update.
+#' @param roomid which room to update
 #' @param description group chat overview text you want to update.
 #' @param icon_preset group chat icon type you want to update.
 #' @param name chat name of the group chat you want to update

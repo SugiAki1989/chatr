@@ -14,7 +14,7 @@ chatr_room_post_file(
 \arguments{
 \item{api_token}{your full ChatWork API token}
 
-\item{roomid}{which room to post the text and R code}
+\item{roomid}{which room to post}
 
 \item{file_path}{file path of the image file you want to upload}
 

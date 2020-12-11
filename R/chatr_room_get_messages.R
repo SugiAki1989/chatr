@@ -1,7 +1,7 @@
 #' Function to get specified chat room messages
 #' @description This function is used to get specified chat room messages
 #' @param api_token your full ChatWork API token
-#' @param roomid which room to get chat room informations.
+#' @param roomid which room to get
 #' @param force default is 0. If 1 is specified, the latest 100 items will be acquired regardless of whether they have not been acquired.
 #' @examples
 #' chatr_room_get_messages(force = 0)
@@ -12,7 +12,7 @@
 # From: https://developer.chatwork.com/ja/endpoint_rooms.html#GET-rooms-room_id-messages
 # Method: GET
 # Endpoint: /rooms/{room_id}/messages
-# Description: チャットのメンバー一覧を取得。
+# Description: チャットのメッセージ一覧を取得。パラメータ未指定だと前回取得分からの差分のみを返します。(最大100件まで取得)
 # How:
 #   curl -X GET -H "X-ChatWorkToken: {my_api_token}" \
 #        "https://api.chatwork.com/v2/rooms/{room_id}/messages?force=0"

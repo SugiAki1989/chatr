@@ -1,7 +1,7 @@
 #' Function to leave or delete group chat room
 #' @description This function is used to leave or delete group chat room.
 #' @param api_token your full ChatWork API token
-#' @param roomid which room to update.
+#' @param roomid which room to update
 #' @param action_type leave or delete
 #' @examples
 #' chatr_room_delete(action_type = "delete")

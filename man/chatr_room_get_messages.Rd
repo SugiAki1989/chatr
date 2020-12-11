@@ -13,7 +13,7 @@ chatr_room_get_messages(
 \arguments{
 \item{api_token}{your full ChatWork API token}
 
-\item{roomid}{which room to get chat room informations.}
+\item{roomid}{which room to get}
 
 \item{force}{default is 0. If 1 is specified, the latest 100 items will be acquired regardless of whether they have not been acquired.}
 }

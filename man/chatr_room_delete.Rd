@@ -13,7 +13,7 @@ chatr_room_delete(
 \arguments{
 \item{api_token}{your full ChatWork API token}
 
-\item{roomid}{which room to update.}
+\item{roomid}{which room to update}
 
 \item{action_type}{leave or delete}
 }

@@ -1,7 +1,7 @@
 #' Function to get specified chat room informations
 #' @description This function is used to get specified chat room informations.
 #' @param api_token your full ChatWork API token
-#' @param roomid which room to get chat room informations.
+#' @param roomid which room to get
 #' @examples
 #' chatr_room_get()
 #' @import httr

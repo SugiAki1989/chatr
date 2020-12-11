@@ -1,7 +1,7 @@
 #' Function to update specified chat room authority
 #' @description This function is used to update specified chat room authority
 #' @param api_token your full ChatWork API token
-#' @param roomid which room to update chat room authority.
+#' @param roomid which room to update
 #' @param members_admin_ids character vactor of account IDs of users who want to have administrator privileges among the members who participate in the created chat.
 #' At least one id must be specified. You can only specify the account IDs of contacted users or users in your organization.
 #' @param members_member_ids character vactor of account IDs of users who want to have member privileges among the members who participate in the created chat.

@@ -12,7 +12,7 @@ chatr_room_get(
 \arguments{
 \item{api_token}{your full ChatWork API token}
 
-\item{roomid}{which room to get chat room informations.}
+\item{roomid}{which room to get}
 }
 \description{
 This function is used to get specified chat room informations.

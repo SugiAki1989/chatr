@@ -15,7 +15,7 @@ chatr_room_put(
 \arguments{
 \item{api_token}{your full ChatWork API token}
 
-\item{roomid}{which room to update.}
+\item{roomid}{which room to update}
 
 \item{description}{group chat overview text you want to update.}
 

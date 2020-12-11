@@ -15,7 +15,7 @@ chatr_room_put_members(
 \arguments{
 \item{api_token}{your full ChatWork API token}
 
-\item{roomid}{which room to update chat room authority.}
+\item{roomid}{which room to update}
 
 \item{members_admin_ids}{character vactor of account IDs of users who want to have administrator privileges among the members who participate in the created chat.
 At least one id must be specified. You can only specify the account IDs of contacted users or users in your organization.}
