@@ -6,7 +6,7 @@
 
 <!-- badges: end -->
 
-chatr package is a R wrapper for sending texts, R scripts and images to chat rooms to get, update and delete chat room information and tasks from Chatwork’s Web API.
+chatr package is a R wrapper for sending texts, R scripts and images to chat rooms to get, update and delete chat room information and tasks from [Chatwork’s Web API(v2)](https://developer.chatwork.com/ja/endpoints.html).
 
 ## Installation
 
@@ -39,6 +39,11 @@ Execute the function with the configuration file path. I'm assuming that a parti
 ``` r
 chatr_setup(config_file_path = "~/path_to_file/config.yml")
 ```
+
+The function names in the chatr package correspond to endpoint and HTTP methods, **except for certain functions**:
+
+- endpoint is `/rooms/{room_id}/files` and method is `POST`: `chatr_room_post_file()`
+- endpoint is `/rooms/{room_id}/messages` and method is `GET`: `chatr_room_get_messages()`
 
 ## Basic Usage
 ### Send text or Rscript to chat room
