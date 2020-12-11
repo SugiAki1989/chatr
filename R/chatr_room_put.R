@@ -60,7 +60,7 @@ chatr_room_put <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
 
   result <- httr::content(x = response,
                           as = "parsed",
-                          encoding = 'utf-8')
+                          encoding = "utf-8")
 
   return(result)
 }

@@ -49,7 +49,7 @@ chatr_me <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN")){
 
   result <- httr::content(x = response,
                           as = "parsed",
-                          encoding = 'utf-8')
+                          encoding = "utf-8")
   httr::warn_for_status(response)
 
   return(result)
