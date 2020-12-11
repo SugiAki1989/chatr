@@ -1,6 +1,14 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
 # chatr
 
 <!-- badges: start -->
+![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/chatr?color=brightgreen)
+
 <!-- badges: end -->
 
 chatr package is a R wrapper for sending texts, R scripts and images to chat rooms to get, update and delete chat room information and tasks from Chatwork’s Web API.
