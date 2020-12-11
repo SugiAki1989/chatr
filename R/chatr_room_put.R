@@ -7,9 +7,8 @@
 #' @param name chat name of the group chat you want to update
 #' @examples
 #' chatr_room_put(
-#'     description = ,
-#'     icon_preset = ,
-#'     name =
+#'     description = "description you want to update",
+#'     name = "name you want to update"
 #'     )
 #' @import httr
 #' @export
@@ -24,7 +23,7 @@
 #        -d "description=group+chat+description& \
 #            icon_preset=meeting& \
 #            name=Website+renewal+project" \
-#            "https://api.chatwork.com/v2/rooms/{room_id}"
+#        "https://api.chatwork.com/v2/rooms/{room_id}"
 # Response:
 # {
 #   "room_id": 1234

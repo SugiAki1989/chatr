@@ -114,11 +114,9 @@ chatr <- function(...,
     )
     httr::warn_for_status(response)
 
-    # REVIEW:
+    # UNNEED: httr::contentchatr("test"))
     # response$message_id <- as.character(httr::content(x = response, as = "parsed"))
   }
 
   return(response)
 }
-
-
