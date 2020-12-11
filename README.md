@@ -19,7 +19,7 @@ remotes::install_github("SugiAki1989/chatr")
 library(chatr)
 ```
 
-**Note:The functions corresponding to `/incoming_requests` and some functions in `/rooms` are not implemented.**
+**Note:The functions corresponding to `/incoming_requests/*` and `/rooms/{room_id}/messages/read`, `/rooms/{room_id}/messages/unread`, `/rooms/{room_id}/link` are not implemented.**
 
 ## Setup
 
