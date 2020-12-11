@@ -28,7 +28,7 @@ is_file_limit <- function(file_path){
 
 #' Check room icon
 #' @description This function is used to check room icon.
-#' @param saaaa aaaa
+#' @param icon_preset icon you want to update
 #' @examples
 #' is_room_icons(icon_preset)
 
