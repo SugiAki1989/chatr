@@ -56,7 +56,7 @@ is_datetime_format <- function(datetime) {
   if (length(result_tmp) == 0) {
     result <- FALSE
     } else if (result_tmp == 1) {
-      result <- TRUE
+    result <- TRUE
     }
 
   return(result)
@@ -75,7 +75,7 @@ conv_datetime2unixtime <- function(datetime){
 
 #' Check task deadline datetime
 #' @description This function is used to check task deadline date
-#' @param icon_preset icon you want to update
+#' @param datetime datetime
 #' @examples
 #' is_deadline(datetime)
 
