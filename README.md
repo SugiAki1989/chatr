@@ -3,7 +3,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-This package is based on slackr and made for ChatWork. A package chatr to send text and R code to ChatWork room.
+chatr package is a R wrapper for sending texts, R scripts and images to chat rooms to get, update and delete chat room information and tasks from Chatwork’s Web API.
 
 ## Installation
 
@@ -20,35 +20,45 @@ library(chatr)
 
 This is a basic example which shows you how to solve a common problem:
 
-The `chatr_setup()` function reads values from the configuration file(config.yml) from the specified directory. As shown below, ChatWork API token and roomid are described in the configuration file.
+First, get the API Token from the "Service Linkage" page in your Chatwork account. Then use `chatr_setup()` to set the API Token to the R environment variable.
+
+The `chatr_setup()` function reads values from the configuration file(config.yml) from the specified directory. As shown below, API token and roomid are described in the configuration file.
 
 ``` r
 default:
   api_token: "xxxxxxxxxxxxxxxxxxxxxx"
   roomid: "123456789"
+  
 ```
 
-Execute the function with the configuration file path. In this version you can not write configurations in function directly. So you have to set configuration by `chatr_setup()`.
+Execute the function with the configuration file path. I'm assuming that a particular account id will access a particular chat room id, but if you want to access other chat rooms as well, override the `room_id` argument in the each function. In this case, `room_id` is plaintext and is not recommended.
 
 ``` r
-chatr_setup(config_file_path = "~/rproject_file/config.yml")
+chatr_setup(config_file_path = "~/path_to_file/config.yml")
 ```
 
-## Usage
-
-If you want to send text, set `code = FALSE` and execute the function.
+## Basic Usage
+### Send text or Rscript to chat room
+If you want to send text, set `code = FALSE` and execute `chatr()`.
 
 ``` r
-chatr(code = FALSE, "Calculation Done!")
+chatr(code = FALSE, "Long Long Loooooong Calculation Done!!")
 ```
 
-If you want to send Rcode and eval it, set `code = TRUE` and execute the function. In this case, the text is enclosed by code tag.
+If you want to send Rscript and eval it, set `code = TRUE` and execute the function. In this case, the text is enclosed by code tag(`[code]Rscript[/code]`).
 
 ``` r
 chatr(code = TRUE,
   set.seed(1989),
-  x <- rnorm(10),
-  y <- rnorm(10),
+  x <- rnorm(100),
+  y <- rnorm(100),
   fit <- lm(y ~ x),
   summary(fit))
+```
+
+### Send image file to chat room
+If you want to send image file, execute `chatr_room_post_file()` with `message` and `file_path`.
+
+```R:R
+chatr_room_post_file(file_message = "Hello Chatwork image.", file_path = "~/path_to_image/image.png")
 ```
