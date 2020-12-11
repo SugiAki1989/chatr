@@ -4,6 +4,7 @@
 #' @examples
 #' chatr_setup(config_file_path = "~/config.yml")
 #' @import config
+#' @export
 
 chatr_setup <- function(config_file_path = NULL){
 

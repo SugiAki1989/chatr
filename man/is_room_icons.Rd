@@ -7,7 +7,7 @@
 is_room_icons(icon_preset)
 }
 \arguments{
-\item{saaaa}{aaaa}
+\item{icon_preset}{icon you want to update}
 }
 \description{
 This function is used to check room icon.
