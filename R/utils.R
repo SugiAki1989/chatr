@@ -73,8 +73,8 @@ is_datetime_format <- function(datetime) {
 #' conv_datetime_to_unixtime(datetime)
 #' @export
 
-conv_datetime_to_unixtime <- function(datetime){
-  result <- as.numeric(as.POSIXlt(datetime, origin = "Asia/Tokyo"))
+conv_datetime_to_unixtime <- function(datetime, origin = "Asia/Tokyo"){
+  result <- as.numeric(as.POSIXlt(datetime, origin = origin))
   return(result)
 }
 
