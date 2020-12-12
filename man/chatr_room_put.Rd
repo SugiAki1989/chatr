@@ -19,7 +19,8 @@ chatr_room_put(
 
 \item{description}{group chat overview text you want to update.}
 
-\item{icon_preset}{group chat icon type you want to update.}
+\item{icon_preset}{group chat icon type you want to update. choose from
+{group, check, document, meeting, event, project, business, study, security, star, idea, heart, magcup, beer, music, sports, travel}.}
 
 \item{name}{chat name of the group chat you want to update}
 }

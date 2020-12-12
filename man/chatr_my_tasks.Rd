@@ -7,7 +7,7 @@
 chatr_my_tasks(
   api_token = Sys.getenv("CHATWORK_API_TOKEN"),
   assigned_by_account_id = NULL,
-  status = "open"
+  status = c("open", "done")
 )
 }
 \arguments{

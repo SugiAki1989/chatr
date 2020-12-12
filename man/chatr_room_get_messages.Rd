@@ -15,7 +15,7 @@ chatr_room_get_messages(
 
 \item{room_id}{which room to get}
 
-\item{force}{default is 0. If 1 is specified, the latest 100 items will be acquired regardless of whether they have not been acquired.}
+\item{force}{If 1 is specified, the latest 100 items will be acquired regardless of whether they have not been acquired. default is 0.}
 }
 \description{
 This function is used to get specified chat room messages

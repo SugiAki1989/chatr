@@ -2,7 +2,7 @@
 % Please edit documentation in R/chatr_room_delete.R
 \name{chatr_room_delete}
 \alias{chatr_room_delete}
-\title{Function to leave or delete group chat room}
+\title{Function to leave or delete chat room}
 \usage{
 chatr_room_delete(
   api_token = Sys.getenv("CHATWORK_API_TOKEN"),
@@ -21,7 +21,7 @@ chatr_room_delete(
 \item{confirm}{check if you really want to leave or delete}
 }
 \description{
-This function is used to leave or delete group chat room.
+This function is used to leave from chat room or delete chat room.
 }
 \examples{
 chatr_room_delete(action_type = "delete")

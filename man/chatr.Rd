@@ -2,26 +2,29 @@
 % Please edit documentation in R/chatr.R
 \name{chatr}
 \alias{chatr}
-\title{Send txet and R Script to ChatWork room.}
+\title{Send txet and R Script to specified chat room.}
 \usage{
 chatr(
   ...,
   code = FALSE,
   api_token = Sys.getenv("CHATWORK_API_TOKEN"),
-  room_id = Sys.getenv("CHATWORK_ROOMID")
+  room_id = Sys.getenv("CHATWORK_ROOMID"),
+  self_unread = 0
 )
 }
 \arguments{
-\item{...}{expressions to be sent to ChatWork}
+\item{...}{expressions to be sent to chat room}
 
-\item{code}{Whether to enclose text and R Script in [code][/code] tags or not}
+\item{code}{whether to enclose text and R Script in [code][/code] tags or not}
 
 \item{api_token}{your full ChatWork API token}
 
 \item{room_id}{which room to post the text and R code}
+
+\item{self_unread}{If 1 is specified, the message added by you will be marked as unread by yourself. default is 0(mark as read).}
 }
 \description{
-This function is used to send a text or an R Script to the specified room_id.
+This function is used to send a text or an R Script to the specified chat room.
 }
 \examples{
 chatr(code = TRUE,

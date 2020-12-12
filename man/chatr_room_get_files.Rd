@@ -21,5 +21,5 @@ chatr_room_get_files(
 This function is used to get specified chat room files.
 }
 \examples{
-chatr_room_get_files(room_id = "111111111", account_id = "111111111")
+chatr_room_get_files(account_id = "111111111")
 }
