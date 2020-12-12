@@ -1,9 +1,9 @@
-#' Send txet and R code to ChatWork room.
-#' @description This function is used to send a text or an R code to the specified room_id.
+#' Send txet and R Script to ChatWork room.
+#' @description This function is used to send a text or an R Script to the specified room_id.
 #' @param ... expressions to be sent to ChatWork
 #' @param api_token your full ChatWork API token
 #' @param room_id which room to post the text and R code
-#' @param code Whether to enclose text and R code in [code][/code] tags or not
+#' @param code Whether to enclose text and R Script in [code][/code] tags or not
 #' @examples
 #' chatr(code = TRUE,
 #' set.seed(1989),
