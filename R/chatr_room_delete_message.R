@@ -3,7 +3,7 @@
 #' @param api_token your full ChatWork API token
 #' @param room_id which room to get
 #' @param message_id which message to delete
-#' @param confirm check if you really want to delete
+#' @param confirm check if you really want to delete. default is FALSE.
 #' @examples
 #' chatr_room_delete_message(message_id = "111111111111111")
 #' @import httr

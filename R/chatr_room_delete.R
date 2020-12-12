@@ -3,9 +3,9 @@
 #' @param api_token your full ChatWork API token
 #' @param room_id which room to update
 #' @param action_type leave or delete
-#' @param confirm check if you really want to leave or delete
+#' @param confirm check if you really want to leave or delete. default is FALSE.
 #' @examples
-#' chatr_room_delete(action_type = "delete")
+#' chatr_room_delete(action_type = "leave", confirm = TRUE)
 #' @import httr
 #' @export
 

@@ -24,5 +24,5 @@ chatr_room_delete(
 This function is used to leave from chat room or delete chat room.
 }
 \examples{
-chatr_room_delete(action_type = "delete")
+chatr_room_delete(action_type = "leave", confirm = TRUE)
 }
