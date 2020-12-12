@@ -1,7 +1,7 @@
 #' Function to get specified chat room tasks
 #' @description This function is used to get specified chat room tasks
 #' @param api_token your full ChatWork API token
-#' @param roomid which room to get
+#' @param room_id which room to get
 #' @param account_id account id of the person in charge of the task
 #' @param assigned_by_account_id account id of the task requester
 #' @param status default is "open". If "done" is specified, Completed tasks will be acquired.
@@ -46,7 +46,7 @@
 # ------------------------------------------------------------------------------------------/
 
 chatr_room_get_tasks <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
-                                 roomid = Sys.getenv("CHATWORK_ROOMID"),
+                                 room_id = Sys.getenv("CHATWORK_ROOMID"),
                                  account_id = NULL,
                                  assigned_by_account_id = NULL,
                                  status = c("open", "done")){
@@ -54,13 +54,13 @@ chatr_room_get_tasks <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
     stop("`api_token` not found. Did you forget to call chatr_setup()?")
   }
 
-  if (roomid == "") {
-    stop("`roomid` not found. Did you forget to call chatr_setup()?")
+  if (room_id == "") {
+    stop("`room_id` not found. Did you forget to call chatr_setup()?")
   }
 
   status <- match.arg(status)
 
-  end_point_url <- paste0(CHATWORK_API_URL, "rooms/", roomid, "/tasks")
+  end_point_url <- paste0(CHATWORK_API_URL, "rooms/", room_id, "/tasks")
 
   response <- httr::GET(url = end_point_url,
                         config = httr::add_headers(`X-ChatWorkToken` = api_token),

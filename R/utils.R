@@ -50,6 +50,7 @@ is_room_icons <- function(icon_preset){
 #' is_datetime_format("2020-12-12 00:00:00")
 
 is_datetime_format <- function(datetime) {
+  # validation: yyyy-mm-dd hh:mm:ss
   pattern <- "^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])\\s{1}([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]"
   result_tmp <- grep(x = datetime, pattern = pattern)
 

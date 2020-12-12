@@ -1,7 +1,7 @@
 #' Function to get specified chat room specified file
 #' @description This function is used to get specified chat room specified file.
 #' @param api_token your full ChatWork API token
-#' @param roomid which room to get
+#' @param room_id which room to get
 #' @param file_id which file_id to get
 #' @param create_download_url whether to generate a URL to download(0 is No, 1 is Yes).
 #' @examples
@@ -33,15 +33,15 @@
 # ------------------------------------------------------------------------------------------/
 
 chatr_room_get_file <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
-                                roomid = Sys.getenv("CHATWORK_ROOMID"),
+                                room_id = Sys.getenv("CHATWORK_ROOMID"),
                                 file_id = NULL,
                                 create_download_url = 0){
   if (api_token == "") {
     stop("`api_token` not found. Did you forget to call chatr_setup()?")
   }
 
-  if (roomid == "") {
-    stop("`roomid` not found. Did you forget to call chatr_setup()?")
+  if (room_id == "") {
+    stop("`room_id` not found. Did you forget to call chatr_setup()?")
   }
 
   if (is.null(file_id) == TRUE){
@@ -52,7 +52,7 @@ chatr_room_get_file <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
     stop("`create_download_url` must be 0 or 1.")
   }
 
-  end_point_url <- paste0(CHATWORK_API_URL, "rooms/", roomid, "/files/", file_id)
+  end_point_url <- paste0(CHATWORK_API_URL, "rooms/", room_id, "/files/", file_id)
 
   response <- httr::GET(url = end_point_url,
                         config = httr::add_headers(`X-ChatWorkToken` = api_token),

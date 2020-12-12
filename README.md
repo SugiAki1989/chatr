@@ -27,12 +27,12 @@ This is a basic example which shows you how to solve a common problem:
 
 First, get the API Token from the "Service Linkage" page in your Chatwork account. Then use `chatr_setup()` to set the API Token to the R environment variable.
 
-The `chatr_setup()` function reads values from the configuration file(config.yml) from the specified directory. As shown below, API token and roomid are described in the configuration file.
+The `chatr_setup()` function reads values from the configuration file(config.yml) from the specified directory. As shown below, API token and room_id are described in the configuration file.
 
 ``` r
 default:
   api_token: "xxxxxxxxxxxxxxxxxxxxxx"
-  roomid: "123456789"
+  room_id: "123456789"
   
 ```
 

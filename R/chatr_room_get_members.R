@@ -1,7 +1,7 @@
 #' Function to get specified chat room members
 #' @description This function is used to get specified chat room members.
 #' @param api_token your full ChatWork API token
-#' @param roomid which room to get
+#' @param room_id which room to get
 #' @examples
 #' chatr_room_get_members()
 #' @import httr
@@ -31,16 +31,16 @@
 # ------------------------------------------------------------------------------------------/
 
 chatr_room_get_members <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
-                                   roomid = Sys.getenv("CHATWORK_ROOMID")){
+                                   room_id = Sys.getenv("CHATWORK_ROOMID")){
   if (api_token == "") {
     stop("`api_token` not found. Did you forget to call chatr_setup()?")
   }
 
-  if (roomid == "") {
-    stop("`roomid` not found. Did you forget to call chatr_setup()?")
+  if (room_id == "") {
+    stop("`room_id` not found. Did you forget to call chatr_setup()?")
   }
 
-  end_point_url <- paste0(CHATWORK_API_URL, "rooms/", roomid, "/members")
+  end_point_url <- paste0(CHATWORK_API_URL, "rooms/", room_id, "/members")
 
   response <- httr::GET(url = end_point_url,
                         config = httr::add_headers(`X-ChatWorkToken` = api_token))

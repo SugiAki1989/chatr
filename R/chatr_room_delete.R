@@ -1,7 +1,7 @@
 #' Function to leave or delete group chat room
 #' @description This function is used to leave or delete group chat room.
 #' @param api_token your full ChatWork API token
-#' @param roomid which room to update
+#' @param room_id which room to update
 #' @param action_type leave or delete
 #' @examples
 #' chatr_room_delete(action_type = "delete")
@@ -24,20 +24,20 @@
 # ------------------------------------------------------------------------------------------/
 
 chatr_room_delete <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
-                              roomid = Sys.getenv("CHATWORK_ROOMID"),
+                              room_id = Sys.getenv("CHATWORK_ROOMID"),
                               action_type = c("leave", "delete")
                            ){
   if (api_token == "") {
     stop("`api_token` not found. Did you forget to call chatr_setup()?")
   }
 
-  if (roomid == "") {
-    stop("`roomid` not found. Did you forget to call chatr_setup()?")
+  if (room_id == "") {
+    stop("`room_id` not found. Did you forget to call chatr_setup()?")
   }
 
   action_type <- match.arg(action_type)
 
-  end_point_url <- paste0(CHATWORK_API_URL, "rooms/", roomid)
+  end_point_url <- paste0(CHATWORK_API_URL, "rooms/", room_id)
 
   response <- httr::DELETE(url = end_point_url,
                            config = httr::add_headers(`X-ChatWorkToken` = api_token),

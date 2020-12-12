@@ -1,7 +1,7 @@
 #' Function to upload image file
-#' @description This function is used to upload image file to the specified roomid.
+#' @description This function is used to upload image file to the specified room_id.
 #' @param api_token your full ChatWork API token
-#' @param roomid which room to post
+#' @param room_id which room to post
 #' @param file_message the body of the message you post with the file
 #' @param file_path file path of the image file you want to upload
 #' @examples
@@ -30,7 +30,7 @@
 # chatr_room_post_file(file_path = "~/Desktop/test_img_43419byte.png")
 
 chatr_room_post_file <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
-                                 roomid = Sys.getenv("CHATWORK_ROOMID"),
+                                 room_id = Sys.getenv("CHATWORK_ROOMID"),
                                  file_path,
                                  message = "Image file uploaded by chatr through API."
                      ) {
@@ -39,8 +39,8 @@ chatr_room_post_file <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
     stop("`api_token` not found. Did you forget to call chatr_setup()?")
   }
 
-  if (roomid == "") {
-    stop("`roomid` not found. Did you forget to call chatr_setup()?")
+  if (room_id == "") {
+    stop("`room_id` not found. Did you forget to call chatr_setup()?")
   }
 
   is_file_path <- file.exists(file_path)
@@ -53,7 +53,7 @@ chatr_room_post_file <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
     stop("Image file size exceeds the upper limit of 5MB.")
   }
 
-  end_point_url <- paste0(CHATWORK_API_URL, "rooms/", roomid, "/files")
+  end_point_url <- paste0(CHATWORK_API_URL, "rooms/", room_id, "/files")
 
   response <- httr::POST(
     url = end_point_url,

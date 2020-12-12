@@ -1,7 +1,7 @@
 #' Function to update specified chat room authority
 #' @description This function is used to update specified chat room authority
 #' @param api_token your full ChatWork API token
-#' @param roomid which room to update
+#' @param room_id which room to update
 #' @param members_admin_ids character vactor of account IDs of users who want to have administrator privileges among the members who participate in the created chat.
 #' At least one id must be specified. You can only specify the account IDs of contacted users or users in your organization.
 #' @param members_member_ids character vactor of account IDs of users who want to have member privileges among the members who participate in the created chat.
@@ -44,7 +44,7 @@
 # ------------------------------------------------------------------------------------------/
 
 chatr_room_put_members <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
-                                   roomid = Sys.getenv("CHATWORK_ROOMID"),
+                                   room_id = Sys.getenv("CHATWORK_ROOMID"),
                                    members_admin_ids = NULL, # must
                                    members_member_ids = NULL,
                                    members_readonly_ids = NULL){
@@ -57,7 +57,7 @@ chatr_room_put_members <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
          At least 1 id must be specified from the contacted user or the user in the organization.")
   }
 
-  end_point_url <- paste0(CHATWORK_API_URL, "rooms/", roomid, "/members")
+  end_point_url <- paste0(CHATWORK_API_URL, "rooms/", room_id, "/members")
 
   admin_ids_collapse    <- paste0(members_admin_ids, collapse = ",")
   member_ids_collapse   <- paste0(members_member_ids, collapse = ",")

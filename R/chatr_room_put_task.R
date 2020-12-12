@@ -1,7 +1,7 @@
 #' Function to update specified chat room task status
 #' @description This function is used to update specified chat room task status
 #' @param api_token your full ChatWork API token
-#' @param roomid which room to get
+#' @param room_id which room to get
 #' @param task_id which task to update
 #' @param body which status you change(open or done)
 #' @examples
@@ -25,15 +25,15 @@
 # ------------------------------------------------------------------------------------------/
 
 chatr_room_put_task <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
-                                roomid = Sys.getenv("CHATWORK_ROOMID"),
+                                room_id = Sys.getenv("CHATWORK_ROOMID"),
                                 task_id = NULL,
                                 body = c("open", "done")){
   if (api_token == "") {
     stop("`api_token` not found. Did you forget to call chatr_setup()?")
   }
 
-  if (roomid == "") {
-    stop("`roomid` not found. Did you forget to call chatr_setup()?")
+  if (room_id == "") {
+    stop("`room_id` not found. Did you forget to call chatr_setup()?")
   }
 
   if (is.null(task_id) == TRUE){
@@ -42,7 +42,7 @@ chatr_room_put_task <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
 
   body <- match.arg(body)
 
-  end_point_url <- paste0(CHATWORK_API_URL, "rooms/", roomid, "/tasks/", task_id, "/status")
+  end_point_url <- paste0(CHATWORK_API_URL, "rooms/", room_id, "/tasks/", task_id, "/status")
 
   response <- httr::PUT(url = end_point_url,
                         config = httr::add_headers(`X-ChatWorkToken` = api_token),
