@@ -10,7 +10,6 @@ DEFAULT_ICONS <- c("group", "check", "document", "meeting", "event", "project",
 #' @description This function is used to check file size.
 #' @param file_path file path of the image or video file you want to upload
 #' @examples is_file_limit(file_path = "~/Documents/chatr/Rlogo.png")
-#' @export
 
 is_file_limit <- function(file_path){
 
@@ -32,7 +31,6 @@ is_file_limit <- function(file_path){
 #' @description This function is used to check room icon.
 #' @param icon_preset icon you want to update
 #' @examples is_room_icons(icon_preset = "meeting")
-#' @export
 
 is_room_icons <- function(icon_preset){
   if (icon_preset %in% DEFAULT_ICONS){
@@ -49,7 +47,6 @@ is_room_icons <- function(icon_preset){
 #' @examples
 #' datetime <- "2020-12-12 15:23:17"
 #' is_datetime_format(datetime)
-#' @export
 
 is_datetime_format <- function(datetime) {
   # validation: yyyy-mm-dd hh:mm:ss
@@ -71,7 +68,6 @@ is_datetime_format <- function(datetime) {
 #' @examples
 #' datetime <- "2020-12-12 15:23:17"
 #' is_deadline(datetime)
-#' @export
 
 is_deadline <- function(datetime){
   if (datetime >= as.numeric(Sys.time())){
