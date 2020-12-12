@@ -1,9 +1,10 @@
-#' Send txet and R Script to ChatWork room.
-#' @description This function is used to send a text or an R Script to the specified room_id.
-#' @param ... expressions to be sent to ChatWork
+#' Send txet and R Script to specified chat room.
+#' @description This function is used to send a text or an R Script to the specified chat room.
+#' @param ... expressions to be sent to chat room
 #' @param api_token your full ChatWork API token
 #' @param room_id which room to post the text and R code
-#' @param code Whether to enclose text and R Script in [code][/code] tags or not
+#' @param self_unread If 1 is specified, the message added by you will be marked as unread by yourself. default is 0(mark as read).
+#' @param code whether to enclose text and R Script in [code][/code] tags or not
 #' @examples
 #' chatr(code = TRUE,
 #' set.seed(1989),
@@ -34,7 +35,8 @@
 chatr <- function(...,
                   code = FALSE,
                   api_token = Sys.getenv("CHATWORK_API_TOKEN"),
-                  room_id = Sys.getenv("CHATWORK_ROOMID")) {
+                  room_id = Sys.getenv("CHATWORK_ROOMID"),
+                  self_unread = 0) {
 
   if (api_token == "") {
     stop("`api_token` not found. Did you forget to call chatr_setup()?")
@@ -42,6 +44,10 @@ chatr <- function(...,
 
   if (room_id == "") {
     stop("`room_id` not found. Did you forget to call chatr_setup()?")
+  }
+
+  if (self_unread %nin% c(0, 1)) {
+    stop("`self_unread` must be 0 or 1.")
   }
 
   if (!missing(...)) {
@@ -110,7 +116,7 @@ chatr <- function(...,
       url = end_point_url,
       config = httr::add_headers(`X-ChatWorkToken` = api_token),
       body = list(body = output,
-                  self_unread = 0)
+                  self_unread = self_unread)
     )
     httr::warn_for_status(response)
 
