@@ -4,7 +4,7 @@ Title: R wrapper for Chatwork Web API
 Version: 0.0.0.9
 Author: Sugiaki1989
 Maintainer: Sugiaki1989 <akisugi1989@gmail.com>
-Description: chatworkr package is a R wrapper for sending texts, R scripts and images to chat rooms to get, update and delete chat room information and tasks from Chatwork’s Web API(v2). 
+Description: chatr package is a R wrapper for sending texts, R scripts and images to chat rooms to get, update and delete chat room information and tasks from Chatwork’s Web API(v2). 
 License: MIT + file LICENSE
 Encoding: UTF-8
 Depends:
