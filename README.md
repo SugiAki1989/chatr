@@ -1,22 +1,22 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-# chatworkr
+# chatr
 
 <!-- badges: start -->
-![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/chatworkr?color=brightgreen)
+![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/chatr?color=brightgreen)
 
 <!-- badges: end -->
 
-chatworkr package is a R wrapper for sending texts, R scripts and images to chat rooms to get, update and delete chat room information and tasks from [Chatwork’s Web API(v2)](https://developer.chatwork.com/ja/endpoints.html).
+chatr package is a R wrapper for sending texts, R scripts and images to chat rooms to get, update and delete chat room information and tasks from [Chatwork’s Web API(v2)](https://developer.chatwork.com/ja/endpoints.html).
 
 ## Installation
 
-You can install the development version of chatworkr from [GitHub](https://github.com/SugiAki1989/chatworkr) with:
+You can install the development version of chatr from [GitHub](https://github.com/SugiAki1989/chatr) with:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("SugiAki1989/chatworkr")
+remotes::install_github("SugiAki1989/chatr")
 
-library(chatworkr)
+library(chatr)
 ```
 
 **Note:The functions corresponding to `/incoming_requests/*` and `/rooms/{room_id}/messages/read`, `/rooms/{room_id}/messages/unread`, `/rooms/{room_id}/link` are not implemented.**
@@ -42,7 +42,7 @@ Execute the function with the configuration file path. I'm assuming that a parti
 chatr_setup(config_file_path = "~/path_to_file/config.yml")
 ```
 
-The function names in the chatworkr package correspond to endpoint and HTTP methods, **except for certain functions**:
+The function names in the chatr package correspond to endpoint and HTTP methods, **except for certain functions**:
 
 - endpoint is `/rooms/{room_id}/files` and method is `POST`: `chatr_room_post_file()`
 - endpoint is `/rooms/{room_id}/messages` and method is `GET`: `chatr_room_get_messages()`

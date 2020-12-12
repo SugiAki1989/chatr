@@ -1,4 +1,4 @@
-Package: chatworkr
+Package: chatr
 Type: Package
 Title: R wrapper for Chatwork Web API
 Version: 0.0.0.9

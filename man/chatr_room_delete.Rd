@@ -18,7 +18,7 @@ chatr_room_delete(
 
 \item{action_type}{leave or delete}
 
-\item{confirm}{check if you really want to leave or delete}
+\item{confirm}{check if you really want to leave or delete. default is FALSE.}
 }
 \description{
 This function is used to leave from chat room or delete chat room.

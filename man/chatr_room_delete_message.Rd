@@ -18,7 +18,7 @@ chatr_room_delete_message(
 
 \item{message_id}{which message to delete}
 
-\item{confirm}{check if you really want to delete}
+\item{confirm}{check if you really want to delete. default is FALSE.}
 }
 \description{
 This function is used to delete specified chat room message
