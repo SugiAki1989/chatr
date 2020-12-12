@@ -82,8 +82,7 @@ chatr_room_post <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
   }
 
   if (is.null(members_admin_ids) == TRUE){
-    stop("`members_admin_ids` is invalid.
-         At least 1 id must be specified from the contacted user or the user in the organization.")
+    stop("`members_admin_ids` is invalid. At least 1 id must be specified from the contacted user or the user in the organization.")
   }
 
   end_point_url <- paste0(CHATWORK_API_URL, "rooms")
