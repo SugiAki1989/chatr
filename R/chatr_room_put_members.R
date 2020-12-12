@@ -52,12 +52,20 @@ chatr_room_put_members <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
     stop("`api_token` not found. Did you forget to call chatr_setup()?")
   }
 
+  if (room_id == "") {
+    stop("`room_id` not found. Did you forget to call chatr_setup()?")
+  }
+
   if (is.null(members_admin_ids) == TRUE){
     stop("`members_admin_ids` is invalid.
          At least 1 id must be specified from the contacted user or the user in the organization.")
   }
 
   end_point_url <- paste0(CHATWORK_API_URL, "rooms/", room_id, "/members")
+
+  # TODO
+  # When updating the authority, if the existing ID is not specified,
+  # it will be deleted, so keep the corresponding ID as it is
 
   admin_ids_collapse    <- paste0(members_admin_ids, collapse = ",")
   member_ids_collapse   <- paste0(members_member_ids, collapse = ",")

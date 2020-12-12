@@ -1,5 +1,5 @@
-#' Function to leave or delete group chat room
-#' @description This function is used to leave or delete group chat room.
+#' Function to leave or delete chat room
+#' @description This function is used to leave from chat room or delete chat room.
 #' @param api_token your full ChatWork API token
 #' @param room_id which room to update
 #' @param action_type leave or delete
@@ -57,3 +57,5 @@ chatr_room_delete <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
 
   return(invisible(result))
 }
+
+

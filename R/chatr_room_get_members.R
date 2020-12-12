@@ -13,7 +13,7 @@
 # Endpoint: /rooms/{room_id}/members
 # Description: チャットのメンバー一覧を取得。
 # How:
-#   curl -X GET -H "X-ChatWorkToken: {my_api_token}" \
+#   curl -X GET -H "X-ChatWorkToken: {my_api_token}"
 #        "https://api.chatwork.com/v2/rooms/{room_id}/members"
 # Response:
 # [
