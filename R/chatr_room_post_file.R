@@ -42,9 +42,9 @@ chatr_room_post_file <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
     stop("`room_id` not found. Did you forget to call chatr_setup()?")
   }
 
-  is_file_path <- file.exists(file)
+  is_file_path <- file.exists(v)
   if (is_file_path != TRUE) {
-    stop("image file not found. please confirm file path.")
+    stop("`file` is invalid. image file not found. please confirm file path.")
   }
 
   is_limit <- is_file_limit(file)

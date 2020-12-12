@@ -39,7 +39,6 @@ chatr_room_delete_message <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN
     stop("`message_id` not found. specify the message id.")
   }
 
-
   if (confirm == FALSE){
     stop("if you really want to delete, set TRUE to `confirm` argument.")
   }

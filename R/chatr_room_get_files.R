@@ -4,7 +4,7 @@
 #' @param room_id which room to get
 #' @param account_id which account_id to get
 #' @examples
-#' chatr_room_get_files(room_id = "111111111", account_id = "111111111")
+#' chatr_room_get_files(account_id = "111111111")
 #' @import httr
 #' @export
 
@@ -42,6 +42,10 @@ chatr_room_get_files <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
 
   if (room_id == "") {
     stop("`room_id` not found. Did you forget to call chatr_setup()?")
+  }
+
+  if (is.null(account_id) == TRUE) {
+    message("[info] `account_id` is not specified.")
   }
 
   end_point_url <- paste0(CHATWORK_API_URL, "rooms/", room_id, "/files")

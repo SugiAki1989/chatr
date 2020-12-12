@@ -58,6 +58,14 @@ chatr_room_get_tasks <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
     stop("`room_id` not found. Did you forget to call chatr_setup()?")
   }
 
+  if (is.null(account_id) == TRUE) {
+    message("[info] `account_id` is not specified")
+  }
+
+  if (is.null(assigned_by_account_id) == TRUE) {
+    message("[info] `assigned_by_account_id` is not specified")
+  }
+
   status <- match.arg(status)
 
   end_point_url <- paste0(CHATWORK_API_URL, "rooms/", room_id, "/tasks")
