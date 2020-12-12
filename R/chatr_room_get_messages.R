@@ -2,7 +2,7 @@
 #' @description This function is used to get specified chat room messages
 #' @param api_token your full ChatWork API token
 #' @param room_id which room to get
-#' @param force default is 0. If 1 is specified, the latest 100 items will be acquired regardless of whether they have not been acquired.
+#' @param force If 1 is specified, the latest 100 items will be acquired regardless of whether they have not been acquired. default is 0.
 #' @examples
 #' chatr_room_get_messages(force = 0)
 #' @import httr
