@@ -59,10 +59,12 @@
 
 chatr_my_tasks <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
                         assigned_by_account_id = NULL,
-                        status = "open"){
+                        status = c("open", "done")){
   if (api_token == "") {
     stop("`api_token` not found. Did you forget to call chatr_setup()?")
   }
+
+  status <- match.arg(status)
 
   end_point_url <- paste0(CHATWORK_API_URL, "my/tasks")
 
