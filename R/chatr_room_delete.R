@@ -57,5 +57,3 @@ chatr_room_delete <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
 
   return(invisible(result))
 }
-
-chatr_room_delete(action_type = "delete")

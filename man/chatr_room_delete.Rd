@@ -7,7 +7,8 @@
 chatr_room_delete(
   api_token = Sys.getenv("CHATWORK_API_TOKEN"),
   room_id = Sys.getenv("CHATWORK_ROOMID"),
-  action_type = c("leave", "delete")
+  action_type = c("leave", "delete"),
+  confirm = FALSE
 )
 }
 \arguments{
@@ -16,6 +17,8 @@ chatr_room_delete(
 \item{room_id}{which room to update}
 
 \item{action_type}{leave or delete}
+
+\item{confirm}{check if you really want to leave or delete}
 }
 \description{
 This function is used to leave or delete group chat room.

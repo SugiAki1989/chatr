@@ -7,7 +7,8 @@
 chatr_room_delete_message(
   api_token = Sys.getenv("CHATWORK_API_TOKEN"),
   room_id = Sys.getenv("CHATWORK_ROOMID"),
-  message_id = NULL
+  message_id = NULL,
+  confirm = FALSE
 )
 }
 \arguments{
@@ -15,7 +16,9 @@ chatr_room_delete_message(
 
 \item{room_id}{which room to get}
 
-\item{message_id}{which message to update}
+\item{message_id}{which message to delete}
+
+\item{confirm}{check if you really want to delete}
 }
 \description{
 This function is used to delete specified chat room message
