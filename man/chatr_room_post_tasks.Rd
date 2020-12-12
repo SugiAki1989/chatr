@@ -10,7 +10,8 @@ chatr_room_post_tasks(
   body = NULL,
   limit = NULL,
   limit_type = c("none", "date", "time"),
-  to_ids = NULL
+  to_ids = NULL,
+  origin = "Asia/Tokyo"
 )
 }
 \arguments{
@@ -25,6 +26,8 @@ chatr_room_post_tasks(
 \item{limit_type}{task deadline type(none, date, time)}
 
 \item{to_ids}{account ids of the person in charge}
+
+\item{origin}{default origin is "Asia/Tokyo"}
 }
 \description{
 This function is used to create specified chat room tasks
@@ -33,5 +36,6 @@ This function is used to create specified chat room tasks
 chatr_room_post_tasks(body = "sample task",
                       limit = "2020-12-15 00:00:00", # unix time is 16079583600
                       limit_type = "time",
-                      to_ids = c("1111111","222222"))
+                      to_ids = c("1111111","222222"),
+                      origin = "Asia/Tokyo")
 }

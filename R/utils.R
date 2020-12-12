@@ -65,19 +65,6 @@ is_datetime_format <- function(datetime) {
   return(result)
 }
 
-#' Unix time converter to datetime
-#' @description This function is used to convert from JST datetime to Unix time
-#' @param datetime datetime
-#' @examples
-#' datetime <- "2020-12-12 15:23:17"
-#' conv_datetime_to_unixtime(datetime)
-#' @export
-
-conv_datetime_to_unixtime <- function(datetime, origin = "Asia/Tokyo"){
-  result <- as.numeric(as.POSIXlt(datetime, origin = origin))
-  return(result)
-}
-
 #' Check task deadline datetime
 #' @description This function is used to check task deadline date
 #' @param datetime datetime

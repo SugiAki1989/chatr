@@ -6,11 +6,13 @@
 #' @param limit task deadline specified in datetime. format is `yyyy-mm-dd hh:mm:ss`.
 #' @param limit_type task deadline type(none, date, time)
 #' @param to_ids account ids of the person in charge
+#' @param origin default origin is "Asia/Tokyo"
 #' @examples
 #' chatr_room_post_tasks(body = "sample task",
 #'                       limit = "2020-12-15 00:00:00", # unix time is 16079583600
 #'                       limit_type = "time",
-#'                       to_ids = c("1111111","222222"))
+#'                       to_ids = c("1111111","222222"),
+#'                       origin = "Asia/Tokyo")
 #' @import httr
 #' @export
 
@@ -37,7 +39,8 @@ chatr_room_post_tasks <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
                                   body = NULL,
                                   limit = NULL,
                                   limit_type = c("none", "date", "time"),
-                                  to_ids = NULL){
+                                  to_ids = NULL,
+                                  origin = "Asia/Tokyo"){
   if (api_token == "") {
     stop("`api_token` not found. Did you forget to call chatr_setup()?")
   }
@@ -54,8 +57,8 @@ chatr_room_post_tasks <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
     stop("`limit` is invalid. you must set datatime format `yyyy-mm-dd hh:mm:ss`.")
   }
 
-  # conv_datetime_to_unixtime() returns Unix time and to is_deadline()
-  limit_unixtime <- conv_datetime_to_unixtime(limit)
+  # API params requires Unix time for setting tasks.
+  limit_unixtime <- as.numeric(as.POSIXlt(x = limit, origin = origin))
   if (is_deadline(limit_unixtime) != TRUE){
     stop("`limit` is invalid. you must set the date and time after the current time.")
   }
