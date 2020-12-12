@@ -54,8 +54,8 @@ chatr_room_post_tasks <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
     stop("`limit` is invalid. you must set datatime format `yyyy-mm-dd hh:mm:ss`.")
   }
 
-  # conv_datetime2unixtime() returns Unix time and to is_deadline()
-  limit_unixtime <- conv_datetime2unixtime(limit)
+  # conv_datetime_to_unixtime() returns Unix time and to is_deadline()
+  limit_unixtime <- conv_datetime_to_unixtime(limit)
   if (is_deadline(limit_unixtime) != TRUE){
     stop("`limit` is invalid. you must set the date and time after the current time.")
   }
@@ -69,7 +69,6 @@ chatr_room_post_tasks <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
   to_ids_collapese <- paste0(to_ids, collapse = ",")
 
   end_point_url <- paste0(CHATWORK_API_URL, "rooms/", room_id, "/tasks")
-
 
   response <- httr::POST(url = end_point_url,
                          config = httr::add_headers(`X-ChatWorkToken` = api_token),

@@ -10,8 +10,9 @@ is_datetime_format(datetime)
 \item{datetime}{datetime}
 }
 \description{
-This function is used to check datetime format
+This function is used to check datetime format `yyyy-mm-dd hh:mm:ss`
 }
 \examples{
-is_datetime_format("2020-12-12 00:00:00")
+datetime <- "2020-12-12 15:23:17"
+is_datetime_format(datetime)
 }

@@ -21,13 +21,15 @@ chatr_room_post(
 
 \item{description}{group chat overview text. default is "This room description is created by chatr through API.".}
 
-\item{icon_preset}{group chat icon type. default is "meeting". choose from {group, check, document, meeting, event, project, business, study, security, star, idea, heart, magcup, beer, music, sports, travel}.}
+\item{icon_preset}{group chat icon type. default is "meeting". choose from
+{group, check, document, meeting, event, project, business, study, security, star, idea, heart, magcup, beer, music, sports, travel}.}
 
 \item{link}{whether to create an invitation link. default is 0.}
 
 \item{link_need_acceptance}{whether to participate by administrator approval. default is 0.}
 
-\item{members_admin_ids}{character vactor of account IDs of users who want to have administrator privileges among the members who participate in the created chat. at least one person must be specified.
+\item{members_admin_ids}{character vactor of account IDs of users who want to have administrator privileges among the members who participate in the created chat.
+at least one person must be specified.
 you can only specify the account IDs of contacted users or users in your organization.}
 
 \item{members_member_ids}{character vector of account IDs of the users who want to have member privileges among the members who participate in the created chat.
@@ -43,7 +45,7 @@ This function is used to create chat room.
 }
 \examples{
 chatr_room_post(
-    description = "For Project X you can use it as your own memo, task management, and file server.",
+    description = "For Project X you can use it.",
     icon_preset = "meeting",
     link = 0,
     link_need_acceptance = 0,

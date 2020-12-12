@@ -1,6 +1,6 @@
 Package: chatr
 Type: Package
-Title: R wrapper for Chatwork Web API.
+Title: R wrapper for Chatwork Web API
 Version: 0.0.0.9
 Author: Sugiaki1989
 Maintainer: Sugiaki1989 <akisugi1989@gmail.com>
@@ -8,7 +8,7 @@ Description: chatr package is a R wrapper for sending texts, R scripts and image
 License: MIT + file LICENSE
 Encoding: UTF-8
 Depends:
-    R (>= 4.0.3)
+    R (>= 4.0)
 Imports:
     httr (>= 1.4.2),
     config (>= 0.3)

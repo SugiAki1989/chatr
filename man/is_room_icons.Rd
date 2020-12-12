@@ -13,5 +13,5 @@ is_room_icons(icon_preset)
 This function is used to check room icon.
 }
 \examples{
-is_room_icons(icon_preset)
+is_room_icons(icon_preset = "meeting")
 }

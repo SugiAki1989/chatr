@@ -13,5 +13,5 @@ is_file_limit(file_path)
 This function is used to check file size.
 }
 \examples{
-is_file_limit(file_path = ~/path_to_file)
+is_file_limit(file_path = "~/Documents/chatr/Rlogo.png")
 }

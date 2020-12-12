@@ -5,5 +5,7 @@
 .Rbuildignore
 .DS_Store
 config.yml
+dummy_config.yaml
 memo.md
 tmp.R
+Rlogo.png

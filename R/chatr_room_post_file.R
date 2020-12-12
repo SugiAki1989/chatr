@@ -2,11 +2,10 @@
 #' @description This function is used to upload image file to the specified room_id.
 #' @param api_token your full ChatWork API token
 #' @param room_id which room to post
-#' @param file_message the body of the message you post with the file
-#' @param file_path file path of the image file you want to upload
+#' @param message the body of the message you post with the file
+#' @param file file path of the image file you want to upload
 #' @examples
-#' chatr_room_post_file(file_message = "Hello Chatwork image.",
-#'                      file_path = "path_to_image_file")
+#' chatr_room_post_file(message = "Hello Chatwork image.", file = "~/Documents/chatr/Rlogo.png")
 #' @import httr
 #' @export
 
@@ -27,11 +26,11 @@
 # ------------------------------------------------------------------------------------------/
 # ggplot2::ggplot(data=iris, aes(x=Species, y=Sepal.Length, fill=Species)) + geom_point()
 # ggsave(filename = "test_img_43419byte.png", path = "~/Desktop")
-# chatr_room_post_file(file_path = "~/Desktop/test_img_43419byte.png")
+# chatr_room_post_file(file = "~/Desktop/test_img_43419byte.png")
 
 chatr_room_post_file <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
                                  room_id = Sys.getenv("CHATWORK_ROOMID"),
-                                 file_path,
+                                 file,
                                  message = "Image file uploaded by chatr through API."
                      ) {
 
@@ -43,12 +42,12 @@ chatr_room_post_file <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
     stop("`room_id` not found. Did you forget to call chatr_setup()?")
   }
 
-  is_file_path <- file.exists(file_path)
+  is_file_path <- file.exists(file)
   if (is_file_path != TRUE) {
     stop("image file not found. please confirm file path.")
   }
 
-  is_limit <- is_file_limit(file_path)
+  is_limit <- is_file_limit(file)
   if (is_limit != TRUE){
     stop("Image file size exceeds the upper limit of 5MB.")
   }
@@ -61,7 +60,7 @@ chatr_room_post_file <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
       httr::add_headers(`X-ChatWorkToken` = api_token),
       httr::add_headers(`Content-Type` = "multipart/form-data")
     ),
-    body = list(file = httr::upload_file(file_path),
+    body = list(file = httr::upload_file(file),
                 message = message)
     )
   httr::warn_for_status(response)

@@ -2,7 +2,7 @@
 #' @description This function sets api_token and room_id as environment variables.
 #' @param config_file_path path to config.yml file
 #' @examples
-#' chatr_setup(config_file_path = "~/config.yml")
+#' chatr_setup(config_file_path = "~/Documents/chatr/dummy_config.yml")
 #' @import config
 #' @export
 
@@ -18,4 +18,3 @@ chatr_setup <- function(config_file_path = NULL){
   Sys.setenv(CHATWORK_ROOMID = config$room_id)
 
 }
-

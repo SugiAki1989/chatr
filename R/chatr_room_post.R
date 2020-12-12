@@ -2,10 +2,12 @@
 #' @description This function is used to create chat room.
 #' @param api_token your full ChatWork API token
 #' @param description group chat overview text. default is "This room description is created by chatr through API.".
-#' @param icon_preset group chat icon type. default is "meeting". choose from {group, check, document, meeting, event, project, business, study, security, star, idea, heart, magcup, beer, music, sports, travel}.
+#' @param icon_preset group chat icon type. default is "meeting". choose from
+#' {group, check, document, meeting, event, project, business, study, security, star, idea, heart, magcup, beer, music, sports, travel}.
 #' @param link whether to create an invitation link. default is 0.
 #' @param link_need_acceptance whether to participate by administrator approval. default is 0.
-#' @param members_admin_ids character vactor of account IDs of users who want to have administrator privileges among the members who participate in the created chat. at least one person must be specified.
+#' @param members_admin_ids character vactor of account IDs of users who want to have administrator privileges among the members who participate in the created chat.
+#' at least one person must be specified.
 #' you can only specify the account IDs of contacted users or users in your organization.
 #' @param members_member_ids character vector of account IDs of the users who want to have member privileges among the members who participate in the created chat.
 #' you can only specify the account IDs of contacted users or users in your organization.
@@ -14,7 +16,7 @@
 #' @param name chat name of the group chat you want to create. default is "This room name is created by chatr through API.".
 #' @examples
 #' chatr_room_post(
-#'     description = "For Project X you can use it as your own memo, task management, and file server.",
+#'     description = "For Project X you can use it.",
 #'     icon_preset = "meeting",
 #'     link = 0,
 #'     link_need_acceptance = 0,

@@ -9,8 +9,8 @@ DEFAULT_ICONS <- c("group", "check", "document", "meeting", "event", "project",
 #' Check file size
 #' @description This function is used to check file size.
 #' @param file_path file path of the image or video file you want to upload
-#' @examples
-#' is_file_limit(file_path = ~/path_to_file)
+#' @examples is_file_limit(file_path = "~/Documents/chatr/Rlogo.png")
+#' @export
 
 is_file_limit <- function(file_path){
 
@@ -31,8 +31,8 @@ is_file_limit <- function(file_path){
 #' Check room icon
 #' @description This function is used to check room icon.
 #' @param icon_preset icon you want to update
-#' @examples
-#' is_room_icons(icon_preset)
+#' @examples is_room_icons(icon_preset = "meeting")
+#' @export
 
 is_room_icons <- function(icon_preset){
   if (icon_preset %in% DEFAULT_ICONS){
@@ -44,10 +44,12 @@ is_room_icons <- function(icon_preset){
 }
 
 #' Check task deadline datetime format
-#' @description This function is used to check datetime format
+#' @description This function is used to check datetime format `yyyy-mm-dd hh:mm:ss`
 #' @param datetime datetime
 #' @examples
-#' is_datetime_format("2020-12-12 00:00:00")
+#' datetime <- "2020-12-12 15:23:17"
+#' is_datetime_format(datetime)
+#' @export
 
 is_datetime_format <- function(datetime) {
   # validation: yyyy-mm-dd hh:mm:ss
@@ -67,9 +69,11 @@ is_datetime_format <- function(datetime) {
 #' @description This function is used to convert from JST datetime to Unix time
 #' @param datetime datetime
 #' @examples
-#' conv_datetime2unixtime("2020-12-12 00:00:00")
+#' datetime <- "2020-12-12 15:23:17"
+#' conv_datetime_to_unixtime(datetime)
+#' @export
 
-conv_datetime2unixtime <- function(datetime){
+conv_datetime_to_unixtime <- function(datetime){
   result <- as.numeric(as.POSIXlt(datetime, origin = "Asia/Tokyo"))
   return(result)
 }
@@ -78,7 +82,9 @@ conv_datetime2unixtime <- function(datetime){
 #' @description This function is used to check task deadline date
 #' @param datetime datetime
 #' @examples
+#' datetime <- "2020-12-12 15:23:17"
 #' is_deadline(datetime)
+#' @export
 
 is_deadline <- function(datetime){
   if (datetime >= as.numeric(Sys.time())){

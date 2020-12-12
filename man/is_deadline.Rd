@@ -13,5 +13,6 @@ is_deadline(datetime)
 This function is used to check task deadline date
 }
 \examples{
+datetime <- "2020-12-12 15:23:17"
 is_deadline(datetime)
 }
