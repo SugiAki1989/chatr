@@ -2,7 +2,7 @@
 % Please edit documentation in R/chatr.R
 \name{chatr}
 \alias{chatr}
-\title{Send txet and R code to ChatWork room.}
+\title{Send txet and R Script to ChatWork room.}
 \usage{
 chatr(
   ...,
@@ -14,14 +14,14 @@ chatr(
 \arguments{
 \item{...}{expressions to be sent to ChatWork}
 
-\item{code}{Whether to enclose text and R code in [code][/code] tags or not}
+\item{code}{Whether to enclose text and R Script in [code][/code] tags or not}
 
 \item{api_token}{your full ChatWork API token}
 
 \item{room_id}{which room to post the text and R code}
 }
 \description{
-This function is used to send a text or an R code to the specified room_id.
+This function is used to send a text or an R Script to the specified room_id.
 }
 \examples{
 chatr(code = TRUE,
