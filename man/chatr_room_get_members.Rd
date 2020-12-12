@@ -6,13 +6,13 @@
 \usage{
 chatr_room_get_members(
   api_token = Sys.getenv("CHATWORK_API_TOKEN"),
-  roomid = Sys.getenv("CHATWORK_ROOMID")
+  room_id = Sys.getenv("CHATWORK_ROOMID")
 )
 }
 \arguments{
 \item{api_token}{your full ChatWork API token}
 
-\item{roomid}{which room to get}
+\item{room_id}{which room to get}
 }
 \description{
 This function is used to get specified chat room members.

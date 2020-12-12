@@ -6,14 +6,14 @@
 \usage{
 chatr_room_get_task(
   api_token = Sys.getenv("CHATWORK_API_TOKEN"),
-  roomid = Sys.getenv("CHATWORK_ROOMID"),
+  room_id = Sys.getenv("CHATWORK_ROOMID"),
   task_id = NULL
 )
 }
 \arguments{
 \item{api_token}{your full ChatWork API token}
 
-\item{roomid}{which room to get}
+\item{room_id}{which room to get}
 
 \item{task_id}{which task to get}
 }

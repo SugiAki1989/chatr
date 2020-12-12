@@ -8,7 +8,7 @@ chatr(
   ...,
   code = FALSE,
   api_token = Sys.getenv("CHATWORK_API_TOKEN"),
-  roomid = Sys.getenv("CHATWORK_ROOMID")
+  room_id = Sys.getenv("CHATWORK_ROOMID")
 )
 }
 \arguments{
@@ -18,10 +18,10 @@ chatr(
 
 \item{api_token}{your full ChatWork API token}
 
-\item{roomid}{which room to post the text and R code}
+\item{room_id}{which room to post the text and R code}
 }
 \description{
-This function is used to send a text or an R code to the specified roomid.
+This function is used to send a text or an R code to the specified room_id.
 }
 \examples{
 chatr(code = TRUE,

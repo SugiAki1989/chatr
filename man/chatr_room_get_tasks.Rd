@@ -6,7 +6,7 @@
 \usage{
 chatr_room_get_tasks(
   api_token = Sys.getenv("CHATWORK_API_TOKEN"),
-  roomid = Sys.getenv("CHATWORK_ROOMID"),
+  room_id = Sys.getenv("CHATWORK_ROOMID"),
   account_id = NULL,
   assigned_by_account_id = NULL,
   status = c("open", "done")
@@ -15,7 +15,7 @@ chatr_room_get_tasks(
 \arguments{
 \item{api_token}{your full ChatWork API token}
 
-\item{roomid}{which room to get}
+\item{room_id}{which room to get}
 
 \item{account_id}{account id of the person in charge of the task}
 

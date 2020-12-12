@@ -6,7 +6,7 @@
 \usage{
 chatr_room_post_tasks(
   api_token = Sys.getenv("CHATWORK_API_TOKEN"),
-  roomid = Sys.getenv("CHATWORK_ROOMID"),
+  room_id = Sys.getenv("CHATWORK_ROOMID"),
   body = NULL,
   limit = NULL,
   limit_type = c("none", "date", "time"),
@@ -16,7 +16,7 @@ chatr_room_post_tasks(
 \arguments{
 \item{api_token}{your full ChatWork API token}
 
-\item{roomid}{which room to get}
+\item{room_id}{which room to get}
 
 \item{body}{task message}
 

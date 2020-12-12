@@ -6,7 +6,7 @@
 \usage{
 chatr_room_post_file(
   api_token = Sys.getenv("CHATWORK_API_TOKEN"),
-  roomid = Sys.getenv("CHATWORK_ROOMID"),
+  room_id = Sys.getenv("CHATWORK_ROOMID"),
   file_path,
   message = "Image file uploaded by chatr through API."
 )
@@ -14,14 +14,14 @@ chatr_room_post_file(
 \arguments{
 \item{api_token}{your full ChatWork API token}
 
-\item{roomid}{which room to post}
+\item{room_id}{which room to post}
 
 \item{file_path}{file path of the image file you want to upload}
 
 \item{file_message}{the body of the message you post with the file}
 }
 \description{
-This function is used to upload image file to the specified roomid.
+This function is used to upload image file to the specified room_id.
 }
 \examples{
 chatr_room_post_file(file_message = "Hello Chatwork image.",

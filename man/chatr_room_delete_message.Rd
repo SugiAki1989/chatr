@@ -6,14 +6,14 @@
 \usage{
 chatr_room_delete_message(
   api_token = Sys.getenv("CHATWORK_API_TOKEN"),
-  roomid = Sys.getenv("CHATWORK_ROOMID"),
+  room_id = Sys.getenv("CHATWORK_ROOMID"),
   message_id = NULL
 )
 }
 \arguments{
 \item{api_token}{your full ChatWork API token}
 
-\item{roomid}{which room to get}
+\item{room_id}{which room to get}
 
 \item{message_id}{which message to update}
 }

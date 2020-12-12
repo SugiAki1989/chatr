@@ -6,14 +6,14 @@
 \usage{
 chatr_room_get_files(
   api_token = Sys.getenv("CHATWORK_API_TOKEN"),
-  roomid = Sys.getenv("CHATWORK_ROOMID"),
+  room_id = Sys.getenv("CHATWORK_ROOMID"),
   account_id = NULL
 )
 }
 \arguments{
 \item{api_token}{your full ChatWork API token}
 
-\item{roomid}{which room to get}
+\item{room_id}{which room to get}
 
 \item{account_id}{which account_id to get}
 }
@@ -21,5 +21,5 @@ chatr_room_get_files(
 This function is used to get specified chat room files.
 }
 \examples{
-chatr_room_get_files(roomid = "111111111", account_id = "111111111")
+chatr_room_get_files(room_id = "111111111", account_id = "111111111")
 }

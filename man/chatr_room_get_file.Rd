@@ -6,7 +6,7 @@
 \usage{
 chatr_room_get_file(
   api_token = Sys.getenv("CHATWORK_API_TOKEN"),
-  roomid = Sys.getenv("CHATWORK_ROOMID"),
+  room_id = Sys.getenv("CHATWORK_ROOMID"),
   file_id = NULL,
   create_download_url = 0
 )
@@ -14,7 +14,7 @@ chatr_room_get_file(
 \arguments{
 \item{api_token}{your full ChatWork API token}
 
-\item{roomid}{which room to get}
+\item{room_id}{which room to get}
 
 \item{file_id}{which file_id to get}
 

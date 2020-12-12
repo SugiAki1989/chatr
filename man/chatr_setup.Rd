@@ -10,7 +10,7 @@ chatr_setup(config_file_path = NULL)
 \item{config_file_path}{path to config.yml file}
 }
 \description{
-This function sets api_token and roomid as environment variables.
+This function sets api_token and room_id as environment variables.
 }
 \examples{
 chatr_setup(config_file_path = "~/config.yml")
