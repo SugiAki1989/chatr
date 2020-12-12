@@ -3,6 +3,7 @@
 #' @param api_token your full ChatWork API token
 #' @param room_id which room to update
 #' @param action_type leave or delete
+#' @param confirm check if you really want to leave or delete
 #' @examples
 #' chatr_room_delete(action_type = "delete")
 #' @import httr
@@ -25,7 +26,8 @@
 
 chatr_room_delete <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
                               room_id = Sys.getenv("CHATWORK_ROOMID"),
-                              action_type = c("leave", "delete")
+                              action_type = c("leave", "delete"),
+                              confirm = FALSE
                            ){
   if (api_token == "") {
     stop("`api_token` not found. Did you forget to call chatr_setup()?")
@@ -33,6 +35,10 @@ chatr_room_delete <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
 
   if (room_id == "") {
     stop("`room_id` not found. Did you forget to call chatr_setup()?")
+  }
+
+  if (confirm == FALSE){
+    stop("if you really want to leave or delete, set TRUE to `confirm` argument.")
   }
 
   action_type <- match.arg(action_type)
@@ -52,4 +58,4 @@ chatr_room_delete <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
   return(invisible(result))
 }
 
-
+chatr_room_delete(action_type = "delete")

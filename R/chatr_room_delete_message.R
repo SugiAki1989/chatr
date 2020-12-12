@@ -2,7 +2,8 @@
 #' @description This function is used to delete specified chat room message
 #' @param api_token your full ChatWork API token
 #' @param room_id which room to get
-#' @param message_id which message to update
+#' @param message_id which message to delete
+#' @param confirm check if you really want to delete
 #' @examples
 #' chatr_room_delete_message(message_id = "111111111111111")
 #' @import httr
@@ -24,7 +25,8 @@
 
 chatr_room_delete_message <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
                                       room_id = Sys.getenv("CHATWORK_ROOMID"),
-                                      message_id = NULL){
+                                      message_id = NULL,
+                                      confirm = FALSE){
   if (api_token == "") {
     stop("`api_token` not found. Did you forget to call chatr_setup()?")
   }
@@ -35,6 +37,11 @@ chatr_room_delete_message <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN
 
   if (is.null(message_id) == TRUE){
     stop("`message_id` not found. specify the message id.")
+  }
+
+
+  if (confirm == FALSE){
+    stop("if you really want to delete, set TRUE to `confirm` argument.")
   }
 
   end_point_url <- paste0(CHATWORK_API_URL, "rooms/", room_id, "/messages/", message_id)
@@ -50,5 +57,3 @@ chatr_room_delete_message <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN
 
   return(result)
 }
-
-
