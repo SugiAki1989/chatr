@@ -1,41 +1,49 @@
-# chatr_room_post(
-#       description = "For Project X you can use it.",
-#       icon_preset = "meeting",
-#       link = 0,
-#       link_need_acceptance = 0,
-#       members_admin_ids = c("4262159","4377694"),
-#       members_member_ids = NULL,
-#       members_readonly_ids = NULL,
-#       name = "Project X"
-#       )
+t <- chatr_room_get_messages(force = 0)
+test <- head(t, 2)
+test
+str(test)
+# List of 2
+# $ :List of 5
+# ..$ message_id : chr "1389692260693676032"
+# ..$ account    :List of 3
+# .. ..$ account_id      : int 4262159
+# .. ..$ name            : chr "Test user"
+# .. ..$ avatar_image_url: chr "https://appdata.chatwork.com/avatar/5118/5118806.rsz.png"
+# ..$ body       : chr "あいうえお"
+# ..$ send_time  : int 1607802054
+# ..$ update_time: int 0
+# $ :List of 5
+# ..$ message_id : chr "1389692279106625536"
+# ..$ account    :List of 3
+# .. ..$ account_id      : int 4262159
+# .. ..$ name            : chr "Test user"
+# .. ..$ avatar_image_url: chr "https://appdata.chatwork.com/avatar/5118/5118806.rsz.png"
+# ..$ body       : chr "かきくけこ"
+# ..$ send_time  : int 1607802058
+# ..$ update_time: int 0
 
-chatr_room_put(
-      description = NULL,
-      name = NULL
-      )
+test %>% purrr::map("message_id")
 
+test %>% purrr::map("account") %>% purrr::map("account_id")
+test %>% purrr::map(c("account", "account_id"))
 
-chatr_room_delete(room_id = "207339015",
-                  confirm = TRUE,
-                  action_type = "delete")
-
-
-chatr_room_put_members(
-    members_admin_ids = c("4262159","4377694"),
-    members_member_ids = NULL,
-    members_readonly_ids = NULL,
-    )
-
-
-if (force %nin% c(0, 1)) {
-  stop("`force` must be 0 or 1.")
-}
-
-
-chatr_room_put_message
-chatr_room_delete_message(message_id = "1389683781857705984", confirm = TRUE)
-chatr_room_get_tasks(assigned_by_account_id = "4377694", status = "open")
-chatr_room_get_tasks(status = "open")
+test %>% purrr::map("account") %>% purrr::map("name")
+test %>% purrr::map("account") %>% purrr::map("avatar_image_url")
 
 
-chatr_room_put_task(task_id = "197487623", body = "open")
+# - -----------------------------------------------------------------------
+test %>% purrr::map(`[`, c("message_id", "body", "send_time", "update_time"))
+test %>% purrr::map("account")
+test %>% purrr::map(c("account", "name"))
+test %>% purrr::map(c("account", "avatar_image_url"))
+
+# test %>% purrr::map(`[`, c("message_id", "body", "send_time", "update_time"))
+# test %>% purrr::map(.x = ., .f = `[`, c("message_id", "body", "send_time", "update_time"))
+test %>% purrr::map(.x = ., .f = function(x){`[`(x, c("message_id", "body", "send_time", "update_time"))})
+
+# - -----------------------------------------------------------------------
+test %>% purrr::map(`[`, c("message_id", "body", "send_time", "update_time")) %>% purrr::map_dfr(.x = ., .f = function(x){bind_rows(x)})
+test %>% purrr::map("account") %>% purrr::map_dfr(.x = ., .f = function(x){bind_rows(x)})
+
+
+`+`(1,2)
