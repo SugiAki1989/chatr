@@ -3,7 +3,8 @@
 #' @param api_token your full ChatWork API token
 #' @param room_id which room to update
 #' @param description group chat overview text you want to update.
-#' @param icon_preset group chat icon type you want to update.
+#' @param icon_preset group chat icon type you want to update. choose from
+#' {group, check, document, meeting, event, project, business, study, security, star, idea, heart, magcup, beer, music, sports, travel}.
 #' @param name chat name of the group chat you want to update
 #' @examples
 #' chatr_room_put(
@@ -46,6 +47,14 @@ chatr_room_put <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
 
   if (room_id == "") {
     stop("`room_id` not found. Did you forget to call chatr_setup()?")
+  }
+
+  if (is.null(description) == TRUE){
+    warning("`description` is empty.")
+  }
+
+  if (is.null(name) == TRUE){
+    warning("`name` is empty.")
   }
 
   end_point_url <- paste0(CHATWORK_API_URL, "rooms/", room_id)
