@@ -79,5 +79,18 @@ chatr_room_post_file(message = "Hello Chatwork image.", file_path = "~/path_to_i
 
 ![chatr_room_post_file](https://user-images.githubusercontent.com/65038325/101940188-75a4ea80-3c29-11eb-8023-a044556f96f9.png)
 
+### Get messages in chat room
+If you want to get messages in chat room, execute `chatr_room_get_messages()`. 
+you specify 1 for `force`, the latest 100 items will be acquired regardless of whether they have not been acquired (default is 0). you specify `TRUE` for `to_df`, the return value is converted to `dataframe`(default is `FALSE`, which returns a `list`).
+
+```R:R
+chatr::chatr_room_get_messages(force = 1, to_df = TRUE)
+
+#   message_id       body  send_time update_time account_id      name                                          avatar_image_url
+# 1  111111111 あいうえお 1607808348           0    1111111  Test user https://appdata.chatwork.com/avatar/1111/1111111.rsz.png
+# 2  222222222 かきくけこ 1607808350           0    2222222  Test user https://appdata.chatwork.com/avatar/2222/2222222.rsz.png
+# 3  333333333 さしすせそ 1607830067           0    3333333  Test user https://appdata.chatwork.com/avatar/3333/3333333.rsz.png
+```
+
 ## News
 - Version `0.0.0.9` beta version
