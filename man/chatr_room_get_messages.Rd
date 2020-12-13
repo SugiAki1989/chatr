@@ -7,7 +7,8 @@
 chatr_room_get_messages(
   api_token = Sys.getenv("CHATWORK_API_TOKEN"),
   room_id = Sys.getenv("CHATWORK_ROOMID"),
-  force = 0
+  force = 0,
+  to_df = FALSE
 )
 }
 \arguments{
@@ -16,6 +17,8 @@ chatr_room_get_messages(
 \item{room_id}{which room to get}
 
 \item{force}{If 1 is specified, the latest 100 items will be acquired regardless of whether they have not been acquired. default is 0.}
+
+\item{to_df}{whether to convert the return value to a data frame. default is FALSE.}
 }
 \description{
 This function is used to get specified chat room messages

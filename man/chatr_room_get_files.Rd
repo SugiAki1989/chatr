@@ -7,7 +7,8 @@
 chatr_room_get_files(
   api_token = Sys.getenv("CHATWORK_API_TOKEN"),
   room_id = Sys.getenv("CHATWORK_ROOMID"),
-  account_id = NULL
+  account_id = NULL,
+  to_df = FALSE
 )
 }
 \arguments{
@@ -16,6 +17,8 @@ chatr_room_get_files(
 \item{room_id}{which room to get}
 
 \item{account_id}{which account_id to get}
+
+\item{to_df}{whether to convert the return value to a data frame. default is FALSE.}
 }
 \description{
 This function is used to get specified chat room files.

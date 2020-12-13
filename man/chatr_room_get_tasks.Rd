@@ -9,7 +9,8 @@ chatr_room_get_tasks(
   room_id = Sys.getenv("CHATWORK_ROOMID"),
   account_id = NULL,
   assigned_by_account_id = NULL,
-  status = c("open", "done")
+  status = c("open", "done"),
+  to_df = FALSE
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ chatr_room_get_tasks(
 \item{assigned_by_account_id}{account id of the task requester}
 
 \item{status}{default is "open". If "done" is specified, Completed tasks will be acquired.}
+
+\item{to_df}{whether to convert the return value to a data frame. default is FALSE.}
 }
 \description{
 This function is used to get specified chat room tasks
