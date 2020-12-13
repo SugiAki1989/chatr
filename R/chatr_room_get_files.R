@@ -3,6 +3,7 @@
 #' @param api_token your full ChatWork API token
 #' @param room_id which room to get
 #' @param account_id which account_id to get
+#' @param to_df whether to convert the return value to a data frame. default is FALSE.
 #' @examples
 #' chatr_room_get_files(account_id = "111111111")
 #' @import httr
@@ -35,7 +36,8 @@
 
 chatr_room_get_files <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
                                  room_id = Sys.getenv("CHATWORK_ROOMID"),
-                                 account_id = NULL){
+                                 account_id = NULL,
+                                 to_df = FALSE){
   if (api_token == "") {
     stop("`api_token` not found. Did you forget to call chatr_setup()?")
   }
@@ -58,6 +60,32 @@ chatr_room_get_files <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
   result <- httr::content(x = response,
                           as = "parsed",
                           encoding = "utf-8")
+
+  # NOTE: result returns the following
+  #-----------------------------------------------------------------------------
+  # $ :List of 6
+  # ..$ file_id    : int 11111111
+  # ..$ message_id : chr "1111111111111"
+  # ..$ filesize   : int 1111
+  # ..$ filename   : chr "images.png"
+  # ..$ upload_time: int 11111111111
+  # ..$ account    :List of 3
+  # .. ..$ account_id      : int 11111111111
+  # .. ..$ name            : chr "user01"
+  # .. ..$ avatar_image_url: chr "https://appdata.chatwork.com/******.png"
+  #-----------------------------------------------------------------------------
+
+  if (to_df == TRUE){
+    result <-
+      as.data.frame(
+        cbind(
+          # Get 1 level of the list `[`
+          do.call(what = rbind, args = lapply(X = result, FUN = function(x){`[`(x, c("file_id", "message_id", "filesize", "filename", "upload_time"))})),
+          # Get 2 levels of the list `[[`
+          do.call(what = rbind, args = lapply(X = result, FUN = function(x){`[[`(x, "account")}))
+        )
+      )
+  }
 
   return(result)
 }
