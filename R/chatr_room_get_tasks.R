@@ -112,7 +112,7 @@ chatr_room_get_tasks <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
     l2 <- as.data.frame(do.call(what = rbind, args = lapply(X = result, FUN = function(x){`[[`(x, "account")})))
     # Get 2 levels of the list `[[` & rename because name conflict
     l3 <- as.data.frame(do.call(what = rbind, args = lapply(X = result, FUN = function(x){`[[`(x, "assigned_by_account")})))
-    names(l3) <- paste0("assigned_by_", names(l))
+    names(l3) <- paste0("assigned_by_", names(l3))
 
     result <- cbind(l1, l2, l3)
   }
