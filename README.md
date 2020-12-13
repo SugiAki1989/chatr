@@ -86,10 +86,10 @@ you specify 1 for `force`, the latest 100 items will be acquired regardless of w
 ```R:R
 chatr::chatr_room_get_messages(force = 1, to_df = TRUE)
 
-#   message_id       body  send_time update_time account_id      name                                          avatar_image_url
-# 1  111111111 あいうえお 1607808348           0    1111111  Test user https://appdata.chatwork.com/avatar/1111/1111111.rsz.png
-# 2  222222222 かきくけこ 1607808350           0    2222222  Test user https://appdata.chatwork.com/avatar/2222/2222222.rsz.png
-# 3  333333333 さしすせそ 1607830067           0    3333333  Test user https://appdata.chatwork.com/avatar/3333/3333333.rsz.png
+#   message_id         body  send_time update_time account_id      name                                          avatar_image_url
+# 1  111111111  Hello world 1607808348           0    1111111  Test user https://appdata.chatwork.com/avatar/1111/1111111.rsz.png
+# 2  222222222 Good Morning 1607808350           0    2222222  Test user https://appdata.chatwork.com/avatar/2222/2222222.rsz.png
+# 3  333333333    Good Bye! 1607830067           0    3333333  Test user https://appdata.chatwork.com/avatar/3333/3333333.rsz.png
 ```
 
 ## News
