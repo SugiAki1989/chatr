@@ -5,6 +5,7 @@
 #' @param account_id account id of the person in charge of the task
 #' @param assigned_by_account_id account id of the task requester
 #' @param status default is "open". If "done" is specified, Completed tasks will be acquired.
+#' @param to_df whether to convert the return value to a data frame. default is FALSE.
 #' @examples
 #' chatr_room_get_tasks(account_id = "11111", assigned_by_account_id = "11111", status = "open")
 
@@ -49,7 +50,8 @@ chatr_room_get_tasks <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
                                  room_id = Sys.getenv("CHATWORK_ROOMID"),
                                  account_id = NULL,
                                  assigned_by_account_id = NULL,
-                                 status = c("open", "done")){
+                                 status = c("open", "done"),
+                                 to_df = FALSE){
   if (api_token == "") {
     stop("`api_token` not found. Did you forget to call chatr_setup()?")
   }
@@ -75,12 +77,45 @@ chatr_room_get_tasks <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
                         query = list(account_id = account_id,
                                      assigned_by_account_id = assigned_by_account_id,
                                      status = status)
-  )
+                        )
   httr::warn_for_status(response)
 
   result <- httr::content(x = response,
                           as = "parsed",
                           encoding = "utf-8")
+
+
+  # NOTE: result returns the following
+  #-----------------------------------------------------------------------------
+  # List of 3
+  # $ :List of 8
+  # ..$ task_id            : int 11111111
+  # ..$ account            :List of 3
+  # .. ..$ account_id      : int 11111111
+  # .. ..$ name            : chr "user01"
+  # .. ..$ avatar_image_url: chr "https://appdata.chatwork.com/*****.png"
+  # ..$ assigned_by_account:List of 3
+  # .. ..$ account_id      : int 11111111
+  # .. ..$ name            : chr "user01"
+  # .. ..$ avatar_image_url: chr "https://appdata.chatwork.com/*****.png"
+  # ..$ message_id         : chr "11111111111"
+  # ..$ body               : chr "sample task1"
+  # ..$ limit_time         : int 11111111
+  # ..$ status             : chr "open"
+  # ..$ limit_type         : chr "date"
+  #-----------------------------------------------------------------------------
+
+  if (to_df == TRUE){
+    # Get 1 level of the list `[`
+    l1 <- as.data.frame(do.call(what = rbind, args = lapply(X = r, FUN = function(x){`[`(x, c("task_id", "message_id", "body", "limit_time", "status", "limit_type"))})))
+    # Get 2 levels of the list `[[`
+    l2 <- as.data.frame(do.call(what = rbind, args = lapply(X = r, FUN = function(x){`[[`(x, "account")})))
+    # Get 2 levels of the list `[[` & rename because name conflict
+    l3 <- as.data.frame(do.call(what = rbind, args = lapply(X = r, FUN = function(x){`[[`(x, "assigned_by_account")})))
+    names(l3) <- paste0("assigned_by_", names(l))
+
+    result <- cbind(l1, l2, l3)
+  }
 
   return(result)
 }

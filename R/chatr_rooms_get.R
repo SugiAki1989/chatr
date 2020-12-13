@@ -53,7 +53,7 @@ chatr_rooms_get <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
   if(to_df == TRUE){
     # TODO which is faster
     # result <- purrr::map_dfr(.x = result, .f = function(x){dplyr::bind_rows(x)})
-    result <- as.data.frame(do.call(cbind, result), stringsAsFactors = FALSE)
+    result <- as.data.frame(do.call(rbind, result), stringsAsFactors = FALSE)
   }
 
 

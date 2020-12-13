@@ -2,6 +2,7 @@
 #' @description This function is used to get specified chat room members.
 #' @param api_token your full ChatWork API token
 #' @param room_id which room to get
+#' @param to_df whether to convert the return value to a data frame. default is FALSE.
 #' @examples
 #' chatr_room_get_members()
 #' @import httr
@@ -31,7 +32,8 @@
 # ------------------------------------------------------------------------------------------/
 
 chatr_room_get_members <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
-                                   room_id = Sys.getenv("CHATWORK_ROOMID")){
+                                   room_id = Sys.getenv("CHATWORK_ROOMID"),
+                                   to_df = FALSE){
   if (api_token == "") {
     stop("`api_token` not found. Did you forget to call chatr_setup()?")
   }
@@ -49,6 +51,12 @@ chatr_room_get_members <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
   result <- httr::content(x = response,
                           as = "parsed",
                           encoding = "utf-8")
+
+  if(to_df == TRUE){
+    # TODO which is faster
+    # result <- purrr::map_dfr(.x = result, .f = function(x){bind_rows(x)})
+    result <- as.data.frame(do.call(rbind, result), stringsAsFactors = FALSE)
+  }
 
   return(result)
 }

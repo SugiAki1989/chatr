@@ -3,6 +3,7 @@
 #' @param api_token your full ChatWork API token
 #' @param room_id which room to get
 #' @param force If 1 is specified, the latest 100 items will be acquired regardless of whether they have not been acquired. default is 0.
+#' @param to_df whether to convert the return value to a data frame. default is FALSE.
 #' @examples
 #' chatr_room_get_messages(force = 0)
 #' @import httr
@@ -34,7 +35,8 @@
 
 chatr_room_get_messages <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
                                     room_id = Sys.getenv("CHATWORK_ROOMID"),
-                                    force = 0){
+                                    force = 0,
+                                    to_df = FALSE){
   if (api_token == "") {
     stop("`api_token` not found. Did you forget to call chatr_setup()?")
   }
@@ -58,6 +60,36 @@ chatr_room_get_messages <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN")
   result <- httr::content(x = response,
                           as = "parsed",
                           encoding = "utf-8")
+
+  # NOTE: result returns the following
+  #-----------------------------------------------------------------------------
+  # $ :List of 5
+  # ..$ message_id : chr "11111111111111"
+  # ..$ account    :List of 3
+  # .. ..$ account_id      : int 1111111
+  # .. ..$ name            : chr "user01"
+  # .. ..$ avatar_image_url: chr "https://appdata.chatwork.com/aaaa.png"
+  # ..$ body       : chr "hello world"
+  # ..$ send_time  : int 111111
+  # ..$ update_time: int 0
+  #-----------------------------------------------------------------------------
+  # TODO which is faster
+  # dplyr::bind_cols(
+  #   r %>% purrr::map(`[`, c("message_id", "body", "send_time", "update_time")) %>% purrr::map_dfr(.x = ., .f = function(x){dplyr::bind_rows(x)}),
+  #   r %>% purrr::map("account") %>% purrr::map_dfr(.x = ., .f = function(x){dplyr::bind_rows(x)})
+  # )
+
+  if (to_df == TRUE){
+    result <-
+      as.data.frame(
+        cbind(
+          # Get 1 level of the list `[`
+          do.call(what = rbind, args = lapply(X = r, FUN = function(x){`[`(x, c("message_id", "body", "send_time", "update_time"))})),
+          # Get 2 levels of the list `[[`
+          do.call(what = rbind, args = lapply(X = r, FUN = function(x){`[[`(x, "account")}))
+        )
+      )
+    }
 
   return(result)
 }
