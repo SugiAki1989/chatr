@@ -1,6 +1,7 @@
 #' Function to get information about chat rooms you own
 #' @description This function is used to get information about chat rooms you own
 #' @param api_token your full ChatWork API token
+#' @param to_df whether to convert the return value to a data frame. default is FALSE.
 #' @examples
 #' chatr_rooms_get()
 #' @import httr
@@ -33,7 +34,8 @@
 # ]
 # ------------------------------------------------------------------------------------------/
 
-chatr_rooms_get <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN")){
+chatr_rooms_get <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
+                            to_df = FALSE){
   if (api_token == "") {
     stop("`api_token` not found. Did you forget to call chatr_setup()?")
   }
@@ -48,5 +50,15 @@ chatr_rooms_get <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN")){
                           as = "parsed",
                           encoding = "utf-8")
 
+  if(to_df == TRUE){
+    # TODO which is faster
+    # result <- purrr::map_dfr(.x = result, .f = function(x){dplyr::bind_rows(x)})
+    result <- as.data.frame(do.call(cbind, result), stringsAsFactors = FALSE)
+  }
+
+
   return(result)
 }
+
+
+

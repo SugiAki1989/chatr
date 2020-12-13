@@ -80,4 +80,4 @@ chatr_room_post_file(message = "Hello Chatwork image.", file_path = "~/path_to_i
 ![chatr_room_post_file](https://user-images.githubusercontent.com/65038325/101940188-75a4ea80-3c29-11eb-8023-a044556f96f9.png)
 
 ## News
-- Version 0.0.0.9 beta version
+- Version `0.0.0.9` beta version
