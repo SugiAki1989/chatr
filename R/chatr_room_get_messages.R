@@ -84,9 +84,9 @@ chatr_room_get_messages <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN")
       as.data.frame(
         cbind(
           # Get 1 level of the list `[`
-          do.call(what = rbind, args = lapply(X = r, FUN = function(x){`[`(x, c("message_id", "body", "send_time", "update_time"))})),
+          do.call(what = rbind, args = lapply(X = result, FUN = function(x){`[`(x, c("message_id", "body", "send_time", "update_time"))})),
           # Get 2 levels of the list `[[`
-          do.call(what = rbind, args = lapply(X = r, FUN = function(x){`[[`(x, "account")}))
+          do.call(what = rbind, args = lapply(X = result, FUN = function(x){`[[`(x, "account")}))
         )
       )
     }
