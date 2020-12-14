@@ -5,7 +5,7 @@
 #' @param to_df whether to convert the return value to a data frame. default is FALSE.
 #' @examples
 #' chatr_room_get_members()
-#' @import httr
+#' @import httr dplyr purrr
 #' @export
 
 # /------------------------------------------------------------------------------------------
@@ -53,10 +53,8 @@ chatr_room_get_members <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
                           encoding = "utf-8")
 
   if(to_df == TRUE){
-    # TODO which is faster
-    # result <- purrr::map_dfr(.x = result, .f = function(x){bind_rows(x)})
-    result <- as.data.frame(do.call(rbind, result), stringsAsFactors = FALSE)
-  }
+    result <- result %>% purrr::map_dfr(.x = ., .f = function(x){dplyr::bind_rows(x)})
+    }
 
   return(result)
 }

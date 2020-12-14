@@ -6,7 +6,7 @@
 #' @param to_df whether to convert the return value to a data frame. default is FALSE.
 #' @examples
 #' chatr_room_get_files(account_id = "111111111")
-#' @import httr
+#' @import httr dplyr purrr
 #' @export
 
 # /------------------------------------------------------------------------------------------
@@ -77,13 +77,11 @@ chatr_room_get_files <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
 
   if (to_df == TRUE){
     result <-
-      as.data.frame(
-        cbind(
-          # Get 1 level of the list `[`
-          do.call(what = rbind, args = lapply(X = result, FUN = function(x){`[`(x, c("file_id", "message_id", "filesize", "filename", "upload_time"))})),
-          # Get 2 levels of the list `[[`
-          do.call(what = rbind, args = lapply(X = result, FUN = function(x){`[[`(x, "account")}))
-        )
+      dplyr::bind_cols(
+        # Get 1 level of the list `[`
+        result %>% purrr::map(`[`, c("file_id", "message_id", "filesize", "filename", "upload_time")) %>% purrr::map_dfr(.x = ., .f = function(x){dplyr::bind_rows(x)}),
+        # Get 2 levels of the list `[[`
+        result %>% purrr::map(`[[`, "account") %>% purrr::map_dfr(.x = ., .f = function(x){dplyr::bind_rows(x)})
       )
   }
 
