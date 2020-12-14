@@ -9,7 +9,7 @@
 #' @examples
 #' chatr_room_get_tasks(account_id = "11111", assigned_by_account_id = "11111", status = "open")
 
-#' @import httr
+#' @import httr dplyr purrr
 #' @export
 
 # /------------------------------------------------------------------------------------------
@@ -107,14 +107,14 @@ chatr_room_get_tasks <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
 
   if (to_df == TRUE){
     # Get 1 level of the list `[`
-    l1 <- as.data.frame(do.call(what = rbind, args = lapply(X = result, FUN = function(x){`[`(x, c("task_id", "message_id", "body", "limit_time", "status", "limit_type"))})))
+    l1 <- result %>% purrr::map(`[`, c("task_id", "message_id", "body", "limit_time", "status", "limit_type")) %>% purrr::map_dfr(.x = ., .f = function(x){dplyr::bind_rows(x)})
     # Get 2 levels of the list `[[`
-    l2 <- as.data.frame(do.call(what = rbind, args = lapply(X = result, FUN = function(x){`[[`(x, "account")})))
+    l2 <- result %>% purrr::map(`[[`, "account") %>% purrr::map_dfr(.x = ., .f = function(x){dplyr::bind_rows(x)})
     # Get 2 levels of the list `[[` & rename because name conflict
-    l3 <- as.data.frame(do.call(what = rbind, args = lapply(X = result, FUN = function(x){`[[`(x, "assigned_by_account")})))
+    l3 <- result %>% purrr::map(`[[`, "assigned_by_account") %>% purrr::map_dfr(.x = ., .f = function(x){dplyr::bind_rows(x)})
     names(l3) <- paste0("assigned_by_", names(l3))
 
-    result <- cbind(l1, l2, l3)
+    result <- dplyr::bind_cols(l1, l2, l3)
   }
 
   return(result)
