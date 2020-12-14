@@ -6,7 +6,7 @@
 #' @param to_df whether to convert the return value to a data frame. default is FALSE.
 #' @examples
 #' chatr_room_get_messages(force = 0)
-#' @import httr
+#' @import httr purrr dplyr
 #' @export
 
 # /------------------------------------------------------------------------------------------
@@ -73,24 +73,19 @@ chatr_room_get_messages <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN")
   # ..$ send_time  : int 111111
   # ..$ update_time: int 0
   #-----------------------------------------------------------------------------
-  # TODO which is faster
-  # dplyr::bind_cols(
-  #   r %>% purrr::map(`[`, c("message_id", "body", "send_time", "update_time")) %>% purrr::map_dfr(.x = ., .f = function(x){dplyr::bind_rows(x)}),
-  #   r %>% purrr::map("account") %>% purrr::map_dfr(.x = ., .f = function(x){dplyr::bind_rows(x)})
-  # )
+  # TODO check list in data.frame
+  # do.call(what = rbind, args = lapply(X = result, FUN = function(x){`[`(x, c("message_id", "body", "send_time", "update_time"))})),
+  # do.call(what = rbind, args = lapply(X = result, FUN = function(x){`[[`(x, "account")}))
 
   if (to_df == TRUE){
     result <-
-      as.data.frame(
-        cbind(
+        dplyr::bind_cols(
           # Get 1 level of the list `[`
-          do.call(what = rbind, args = lapply(X = result, FUN = function(x){`[`(x, c("message_id", "body", "send_time", "update_time"))})),
+          result %>% purrr::map(`[`, c("message_id", "body", "send_time", "update_time")) %>% purrr::map_dfr(.x = ., .f = function(x){dplyr::bind_rows(x)}),
           # Get 2 levels of the list `[[`
-          do.call(what = rbind, args = lapply(X = result, FUN = function(x){`[[`(x, "account")}))
+          result %>% purrr::map(`[[`, "account") %>% purrr::map_dfr(.x = ., .f = function(x){dplyr::bind_rows(x)})
         )
-      )
     }
 
   return(result)
 }
-
