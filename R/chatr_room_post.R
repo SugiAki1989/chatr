@@ -110,7 +110,10 @@ chatr_room_post <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
                                      members_readonly_ids = readonly_ids_collapse,
                                      name = name)
                          )
-  httr::warn_for_status(response)
+
+  if (httr::http_error(response) == TRUE) {
+    stop(throw_error(response))
+  }
 
   result <- httr::content(x = response,
                           as = "parsed",

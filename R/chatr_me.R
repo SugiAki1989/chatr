@@ -3,7 +3,7 @@
 #' @param api_token your full ChatWork API token
 #' @examples
 #' chatr_me()
-#' @import httr jsonlite
+#' @import httr
 #' @export
 
 # /------------------------------------------------------------------------------------------

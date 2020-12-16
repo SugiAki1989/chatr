@@ -4,7 +4,7 @@
 #' @param to_df whether to convert the return value to a data frame. default is FALSE.
 #' @examples
 #' chatr_rooms_get()
-#' @import httr dplyr purrr
+#' @import httr dplyr purrr jsonlite
 #' @export
 
 # /------------------------------------------------------------------------------------------
@@ -44,7 +44,10 @@ chatr_rooms_get <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
 
   response <- httr::GET(url = end_point_url,
                         config = httr::add_headers(`X-ChatWorkToken` = api_token))
-  httr::warn_for_status(response)
+
+  if (httr::http_error(response) == TRUE) {
+    stop(throw_error(response))
+  }
 
   result <- httr::content(x = response,
                           as = "parsed",

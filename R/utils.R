@@ -84,6 +84,7 @@ is_deadline <- function(datetime){
 #' @param response
 #' @examples
 #' throw_error(response)
+#' @import jsonlite
 
 throw_error <- function(response){
   return(

@@ -80,7 +80,10 @@ chatr_room_post_tasks <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
                                      limit_type = limit_type,
                                      to_ids = to_ids_collapese)
   )
-  httr::warn_for_status(response)
+
+  if (httr::http_error(response) == TRUE) {
+    stop(throw_error(response))
+  }
 
   result <- httr::content(x = response,
                           as = "parsed",

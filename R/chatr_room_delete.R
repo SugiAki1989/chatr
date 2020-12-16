@@ -49,7 +49,10 @@ chatr_room_delete <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
                            config = httr::add_headers(`X-ChatWorkToken` = api_token),
                            query = list(action_type = action_type)
                            )
-  httr::warn_for_status(response)
+
+  if (httr::http_error(response) == TRUE) {
+    stop(throw_error(response))
+  }
 
   result <- httr::content(x = response,
                           as = "parsed",

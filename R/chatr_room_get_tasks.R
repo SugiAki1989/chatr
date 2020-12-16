@@ -78,7 +78,10 @@ chatr_room_get_tasks <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
                                      assigned_by_account_id = assigned_by_account_id,
                                      status = status)
                         )
-  httr::warn_for_status(response)
+
+  if (httr::http_error(response) == TRUE) {
+    stop(throw_error(response))
+  }
 
   result <- httr::content(x = response,
                           as = "parsed",

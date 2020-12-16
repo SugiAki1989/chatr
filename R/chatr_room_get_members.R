@@ -46,7 +46,10 @@ chatr_room_get_members <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
 
   response <- httr::GET(url = end_point_url,
                         config = httr::add_headers(`X-ChatWorkToken` = api_token))
-  httr::warn_for_status(response)
+
+  if (httr::http_error(response) == TRUE) {
+    stop(throw_error(response))
+  }
 
   result <- httr::content(x = response,
                           as = "parsed",

@@ -14,7 +14,7 @@
 #' summary(f))
 #'
 #' chatr(code = FALSE, "Hello ChatWork!")
-#' @import httr jsonlite
+#' @import httr
 #' @export
 
 # /------------------------------------------------------------------------------------------

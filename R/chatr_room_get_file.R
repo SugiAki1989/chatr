@@ -58,7 +58,10 @@ chatr_room_get_file <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
                         config = httr::add_headers(`X-ChatWorkToken` = api_token),
                         query = list(create_download_url = create_download_url)
                         )
-  httr::warn_for_status(response)
+
+  if (httr::http_error(response) == TRUE) {
+    stop(throw_error(response))
+  }
 
   result <- httr::content(x = response,
                           as = "parsed",
