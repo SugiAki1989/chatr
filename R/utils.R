@@ -79,6 +79,22 @@ is_deadline <- function(datetime){
 }
 
 
+#' display API request error
+#' @description This function is used to catch and throw API request error
+#' @param response
+#' @examples
+#' throw_error(response)
+
+throw_error <- function(response){
+  return(
+    sprintf(
+      "\n< Chatwork API request failed [%s] >\ndate: %s\nmessage: %s",
+      response$status_code,
+      as.POSIXlt(response$date, tz = "Asia/Tokyo"),
+      jsonlite::fromJSON(rawToChar(response$content))$errors
+    )
+  )
+}
 
 
 

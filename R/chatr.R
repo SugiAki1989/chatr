@@ -14,7 +14,7 @@
 #' summary(f))
 #'
 #' chatr(code = FALSE, "Hello ChatWork!")
-#' @import httr
+#' @import httr jsonlite
 #' @export
 
 # /------------------------------------------------------------------------------------------
@@ -37,7 +37,6 @@ chatr <- function(...,
                   api_token = Sys.getenv("CHATWORK_API_TOKEN"),
                   room_id = Sys.getenv("CHATWORK_ROOMID"),
                   self_unread = 0) {
-
   if (api_token == "") {
     stop("`api_token` not found. Did you forget to call chatr_setup()?")
   }
@@ -56,11 +55,14 @@ chatr <- function(...,
 
     # setup in-memory sink
     rval <- NULL
-    file <- textConnection(object = "rval", open = "w", local = TRUE)
+    file <-
+      textConnection(object = "rval",
+                     open = "w",
+                     local = TRUE)
     sink(file)
 
     # how we'll eval expressions
-    evalVis <-function(expr){
+    evalVis <- function(expr) {
       withVisible(eval(expr, parent.frame()))
     }
 
@@ -101,28 +103,28 @@ chatr <- function(...,
 
     sink()
     close(file)
-
-    # convert character vector
-    output <- paste0(rval, collapse = "\n")
-
-    end_point_url <- paste0(CHATWORK_API_URL, "rooms/", room_id, "/messages")
-
-    if (code == TRUE) {
-      output <- sprintf("[code]%s[/code]", output)
-    }
-
-    # `self_unread` arg 1: Unread, 0(default): Already read
-    response <- httr::POST(
-      url = end_point_url,
-      config = httr::add_headers(`X-ChatWorkToken` = api_token),
-      body = list(body = output,
-                  self_unread = self_unread)
-    )
-    httr::warn_for_status(response)
-
-    # UNNEED: httr::contentchatr("test")) is same
-    # response$message_id <- as.character(httr::content(x = response, as = "parsed"))
   }
 
-  return(response)
+  # convert character vector
+  output <- paste0(rval, collapse = "\n")
+
+  end_point_url <- paste0(CHATWORK_API_URL, "rooms/", room_id, "/messages")
+
+  if (code == TRUE) {
+    output <- sprintf("[code]%s[/code]", output)
+  }
+
+  # `self_unread` arg 1: Unread, 0(default): Already read
+  response <- httr::POST(
+    url = end_point_url,
+    config = httr::add_headers(`X-ChatWorkToken` = api_token),
+    body = list(body = output,
+                self_unread = self_unread)
+  )
+
+  if (httr::http_error(response) == TRUE) {
+    stop(throw_error(response))
+  }
+
+  return(invisible(response))
 }
