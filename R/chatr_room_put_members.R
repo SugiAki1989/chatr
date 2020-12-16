@@ -87,5 +87,5 @@ chatr_room_put_members <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
                           as = "parsed",
                           encoding = "utf-8")
 
-  return(result)
+  return(invisible(result))
 }

@@ -89,7 +89,7 @@ chatr_room_post_tasks <- function(api_token = Sys.getenv("CHATWORK_API_TOKEN"),
                           as = "parsed",
                           encoding = "utf-8")
 
-  return(result)
+  return(invisible(result))
 }
 
 
